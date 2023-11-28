@@ -1,77 +1,44 @@
-//とりあえずのやつ
-const axios = require('axios');
+'use strict';
 
-const ACCESS_TOKEN = '5OGPKxJkYCby13cZtwEj7GNS0xCglGSUkz3vt2+LXQCdUIxvoIAcFLjaDsKeJW2vMQrOwJRCMN/bGxvAe8wjeTuFMNCHiNKNHFOFNZl7FLJiRm0D783Vbj4ZOBsll1hEc+wtvnbQLQLxmemMzIKTgwdB04t89/1O/w1cDnyilFU=';
+const express = require('express');
+const line = require('@line/bot-sdk');
+const PORT = process.env.PORT || 3000;
 
-async function doPost(req, res) {
-  const latestEvent = req.body.events[0];
-  const replyToken = latestEvent.replyToken;
-  const userMessage = latestEvent.message.text;
-  const url = 'https://api.line.me/v2/bot/message/reply';
+const config = {
+    channelSecret: process.env.CHANNEL_SECRET,
+    channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN,
+};
 
-  // メッセージに「観光」が含まれているかどうかを確認
-  if (userMessage.includes('観光')) {
-    await axios.post(url, {
-      replyToken: replyToken,
-      messages: [{
-        type: 'text',
-        text: '観光に行くのですね！楽しんできてください！',
-      }],
-    }, {
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8',
-        'Authorization': 'Bearer ' + ACCESS_TOKEN,
-      },
-    });
+const app = express();
 
-    // IF文の暴力を開始
-    sendReply(replyToken, '観光地案内へようこそ！ビーチに行きたいですか？ (はい/いいえ)');
-  } else {
-    // 既存の会話が続行中の場合、ユーザーの回答に応じて進行状態を管理します
-    if (userMessage === 'はい') {
-      // ビーチに行く場合のアクション
-      sendReply(replyToken, 'ビーチに行く気分ですね！実際の観光地情報を提供します。');
-    } else if (userMessage === 'いいえ') {
-      // 他の観光地を提案するアクション
-      sendReply(replyToken, '他の観光地も魅力的ですね！どんな場所が気になりますか？');
-    } else {
-      // 無効な回答に対するメッセージ
-      sendReply(replyToken, 'はいかいいえでお答えください。');
+app.get('/', (req, res) => res.send('Hello LINE BOT!(GET)')); //ブラウザ確認用(無くても問題ない)
+app.post('/webhook', line.middleware(config), (req, res) => {
+    console.log(req.body.events);
+
+    //ここのif分はdeveloper consoleの"接続確認"用なので削除して問題ないです。
+    if(req.body.events[0].replyToken === '00000000000000000000000000000000' && req.body.events[1].replyToken === 'ffffffffffffffffffffffffffffffff'){
+        res.send('Hello LINE BOT!(POST)');
+        console.log('疎通確認用');
+        return; 
     }
+
+    Promise
+      .all(req.body.events.map(handleEvent))
+      .then((result) => res.json(result));
+});
+
+const client = new line.Client(config);
+
+async function handleEvent(event) {
+  if (event.type !== 'message' || event.message.type !== 'text') {
+    return Promise.resolve(null);
   }
 
-  res.json({ content: 'post ok' });
-}
-
-// LINE APIへの応答を送信するヘルパー関数
-async function sendReply(replyToken, message) {
-  const url = 'https://api.line.me/v2/bot/message/reply';
-  await axios.post(url, {
-    replyToken: replyToken,
-    messages: [{
-      type: 'text',
-      text: message,
-    }],
-  }, {
-    headers: {
-      'Content-Type': 'application/json; charset=UTF-8',
-      'Authorization': 'Bearer ' + ACCESS_TOKEN,
-    },
+  return client.replyMessage(event.replyToken, {
+    type: 'text',
+    text: event.message.text //実際に返信の言葉を入れる箇所
   });
 }
 
-// Express.js サーバーのセットアップ
-const express = require('express');
-const bodyParser = require('body-parser');
-const app = express();
-const port = 3000;
-
-app.use(bodyParser.json());
-
-app.post('/webhook', async (req, res) => {
-  await doPost(req, res);
-});
-
-app.listen(port, () => {
-  console.log(`サーバーはポート${port}で実行されています`);
-});
+app.listen(PORT);
+console.log(`Server running at ${PORT}`);
