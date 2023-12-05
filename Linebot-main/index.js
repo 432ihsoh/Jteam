@@ -27,18 +27,36 @@ app.post('/webhook', line.middleware(config), (req, res) => {
       .then((result) => res.json(result));
 });
 
-const client = new line.Client(config);
-
 async function handleEvent(event) {
   if (event.type !== 'message' || event.message.type !== 'text') {
     return Promise.resolve(null);
   }
 
+  // テキストメッセージを取得
+  const receivedText = event.message.text;
+
+  // '観光'という単語を検知
+  if (receivedText.includes('観光')) {
+    // 返信
+    const replyText = '観光に行きたいんですね、いいですねー。私もつれてってください！';
+    
+    // LINEに返信
+    return client.replyMessage(event.replyToken, {
+      type: 'text',
+      text: replyText
+    });
+  }
+
+  // '観光'以外の場合はデフォルトの返信
+  const defaultReply = '"観光"っておくれ';
+
   return client.replyMessage(event.replyToken, {
     type: 'text',
-    text: event.message.text //実際に返信の言葉を入れる箇所
+    text: defaultReply
   });
 }
+
+
 
 app.listen(PORT);
 console.log(`Server running at ${PORT}`);
