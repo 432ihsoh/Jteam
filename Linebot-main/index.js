@@ -34,11 +34,23 @@ async function handleEvent(event) {
     return Promise.resolve(null);
   }
 
+  const userMessage = event.message.text.toLowerCase(); // ユーザーのメッセージを小文字に変換
+
+  // 特定のキーワードに応じて返信文を変更
+  if (userMessage.includes('観光地を探す')) {
+    return client.replyMessage(event.replyToken, {
+      type: 'text',
+      text: 'はい、観光地をお探しですね？',
+    });
+  }
+
+  // 他に一致するキーワードがない場合、デフォルトのオウム返し
   return client.replyMessage(event.replyToken, {
     type: 'text',
-    text: event.message.text //実際に返信の言葉を入れる箇所
+    text: event.message.text, // オウム返し
   });
 }
 
 app.listen(PORT);
 console.log(`Server running at ${PORT}`);
+
