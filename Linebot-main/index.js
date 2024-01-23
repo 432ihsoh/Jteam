@@ -32,7 +32,7 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 const client = new line.Client(config);
  
 // 観光地情報の読み込み
-const travelData = JSON.parse(fs.readFileSync('travel.json', 'utf8'));
+const travelData = JSON.parse(fs.readFileSync('Linebot-main\Travel\kannkouti\traval.json', 'utf8'));
  
 async function handleEvent(event) {
     if (event.type !== 'message' || event.message.type !== 'text') {
