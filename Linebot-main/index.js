@@ -41,7 +41,7 @@ async function handleEvent(event) {
  
     const userMessage = event.message.text.toLowerCase();
  
-    if (userMessage === 'はい') {
+    if (userMessage === '観光地を探す') {
         const randomIndex = Math.floor(Math.random() * travelData.length);
         const randomSpot = travelData[randomIndex].spot;
  
