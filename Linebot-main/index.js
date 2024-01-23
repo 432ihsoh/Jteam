@@ -34,13 +34,17 @@ const travelData = JSON.parse(fs.readFileSync('./Travel/kannkouti/traval.json', 
 // ユーザーごとの回答状態を保持するオブジェクト
 // ユーザーごとの回答状態を保持するオブジェクト
 let userState = {};
-
 async function handleEvent(event) {
     // 以前の回答状態を取得するか、初期化する
     const currentState = userState[event.source.userId] || { step: 0 };
 
     if (event.type !== 'message' || event.message.type !== 'text') {
-        return Promise.resolve(null);
+        // テキスト以外のメッセージが来た場合のエラーハンドリング
+        const errorMessage = 'すみません、テキストメッセージでお答えいただけますか？';
+        return client.replyMessage(event.replyToken, {
+            type: 'text',
+            text: errorMessage
+        });
     }
 
     const userMessage = event.message.text.toLowerCase();
@@ -57,6 +61,13 @@ async function handleEvent(event) {
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
                     text: questionText
+                });
+            } else {
+                // ステップ0で'観光地を探す'以外の回答へのエラーハンドリング
+                const errorMessage = '「観光地を探す」と入力してください。';
+                return client.replyMessage(event.replyToken, {
+                    type: 'text',
+                    text: errorMessage
                 });
             }
             break;
@@ -81,6 +92,13 @@ async function handleEvent(event) {
                     type: 'text',
                     text: followUpQuestionText
                 });
+            } else {
+                // ステップ1で'はい'や'いいえ'以外の回答へのエラーハンドリング
+                const errorMessage = '「はい」か「いいえ」でお答えください。';
+                return client.replyMessage(event.replyToken, {
+                    type: 'text',
+                    text: errorMessage
+                });
             }
             break;
         // 他のステップに対する処理を追加できます
@@ -91,6 +109,7 @@ async function handleEvent(event) {
 
     return Promise.resolve(null);
 }
+
 
 
 app.listen(PORT);
