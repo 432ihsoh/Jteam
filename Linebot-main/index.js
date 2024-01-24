@@ -52,6 +52,7 @@ async function handleEvent(event) {
 
     // 現在のステップに基づいて処理を分岐
    // 現在のステップに基づいて処理を分岐
+// 現在のステップに基づいて処理を分岐
 switch (currentState.step) {
     case 0:
         if (userMessage === '観光地を探す') {
@@ -105,9 +106,10 @@ switch (currentState.step) {
                 text: errorMessage
             });
         }
-        break;
+        break;  // ここで break 文を追加
     // 他のステップに対する処理を追加できます
 }
+
 
     // ユーザーの回答状態を更新
     userState[event.source.userId] = currentState;
