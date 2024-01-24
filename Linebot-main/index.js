@@ -24,14 +24,15 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 
     Promise
         .all(req.body.events.map(handleEvent))
-        .then((result) => res.json(result));
+        .then((result) => res.json(result))
+        .catch((error) => {
+            console.error('Error handling events:', error);
+            res.status(500).end();
+        });
 });
 
 const client = new line.Client(config);
 
-const travelData = JSON.parse(fs.readFileSync('./Travel/kannkouti/traval.json', 'utf8'));
-
-// ユーザーごとの回答状態を保持するオブジェクト
 // ユーザーごとの回答状態を保持するオブジェクト
 let userState = {};
 async function handleEvent(event) {
@@ -102,8 +103,6 @@ async function handleEvent(event) {
 
     return Promise.resolve(null);
 }
-
-
 
 app.listen(PORT);
 console.log(`Server running at ${PORT}`);
