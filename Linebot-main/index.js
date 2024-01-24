@@ -129,5 +129,3 @@ app.listen(PORT);
 console.log(`Server running at ${PORT}`);
 
 
-app.listen(PORT);
-console.log(`Server running at ${PORT}`);
