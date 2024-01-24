@@ -30,9 +30,6 @@ app.post('/webhook', line.middleware(config), (req, res) => {
             res.status(500).end();
         });
 });
-
-const client = new line.Client(config);
-
 // ユーザーごとの回答状態を保持するオブジェクト
 let userState = {};
 async function handleEvent(event) {
@@ -50,78 +47,75 @@ async function handleEvent(event) {
 
     const userMessage = event.message.text.toLowerCase();
 
+    // 最初に戻るを処理
+    if (userMessage === '最初に戻る') {
+        const restartText = '初めからやり直します。観光地をお探しですね。ではこれからいくつかの質問をしていきます。\n自然は好きですか？（はい／いいえ）';
+        // ステップを初めに戻す
+        currentState.step = 0;
+        // ユーザーに再スタートを通知
+        return client.replyMessage(event.replyToken, {
+            type: 'text',
+            text: restartText
+        });
+    }
+
     // 現在のステップに基づいて処理を分岐
-   // 現在のステップに基づいて処理を分岐
-// 現在のステップに基づいて処理を分岐
-// 現在のステップに基づいて処理を分岐
-switch (currentState.step) {
-    case 0:
-        if (userMessage === '観光地を探す') {
-            // 質問に対する処理
-            const questionText = '観光地をお探しですね。ではこれからいくつかの質問をしていきます。\n自然は好きですか？（はい／いいえ）';
-            // ステップを進める
-            currentState.step = 1;
-            // ユーザーに質問を送信
-            return client.replyMessage(event.replyToken, {
-                type: 'text',
-                text: questionText
-            });
-        }
-        break;
-    case 1:
-        if (userMessage === 'はい') {
-            // 'はい' に対する処理
-            const responseText = '素晴らしいです！自然が好きな方にはたくさんの観光地がありますね。';
-            // ステップを進める
-            currentState.step = 2;
-            // ユーザーに回答を送信
-            return client.replyMessage(event.replyToken, {
-                type: 'text',
-                text: responseText
-            });
-        } else if (userMessage === 'いいえ') {
-            // 'いいえ' に対する処理
-            const followUpQuestionText = 'そうですか、温泉は好きですか？（はい／いいえ）';
-            // ステップを進める
-            currentState.step = 3;
-            // ユーザーにフォローアップの質問を送信
-            return client.replyMessage(event.replyToken, {
-                type: 'text',
-                text: followUpQuestionText
-            });
-        } else {
-            // はい／いいえ以外の回答へのエラーハンドリング
-            const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
-            return client.replyMessage(event.replyToken, {
-                type: 'text',
-                text: errorMessage
-            });
-        }
-        break;
-    case 2:
-        if (userMessage === '最初に戻る') {
-            // '最初に戻る' に対する処理
-            const restartText = '初めからやり直します。';
-            // ステップを初めに戻す
-            currentState.step = 0;
-            // ユーザーに再スタートを通知
-            return client.replyMessage(event.replyToken, {
-                type: 'text',
-                text: restartText
-            });
-        } else {
-            // '最初に戻る' 以外の回答へのエラーハンドリング
-            const errorMessage = '申し訳ありませんが、最初に戻るか現在の質問にお答えください。';
-            return client.replyMessage(event.replyToken, {
-                type: 'text',
-                text: errorMessage
-            });
-        }
-        break;
-    // 他のステップに対する処理を追加できます
-}
+    switch (currentState.step) {
+        case 0:
+            if (userMessage === '観光地を探す') {
+                // 質問に対する処理
+                const questionText = '観光地をお探しですね。ではこれからいくつかの質問をしていきます。\n自然は好きですか？（はい／いいえ）';
+                // ステップを進める
+                currentState.step = 1;
+                // ユーザーに質問を送信
+                return client.replyMessage(event.replyToken, {
+                    type: 'text',
+                    text: questionText
+                });
+            }
+            break;
+        case 1:
+            if (userMessage === 'はい') {
+                // 'はい' に対する処理
+                const responseText = '素晴らしいです！自然が好きな方にはたくさんの観光地がありますね。';
+                // ステップを進める
+                currentState.step = 2;
+                // ユーザーに回答を送信
+                return client.replyMessage(event.replyToken, {
+                    type: 'text',
+                    text: responseText
+                });
+            } else if (userMessage === 'いいえ') {
+                // 'いいえ' に対する処理
+                const followUpQuestionText = 'そうですか、温泉は好きですか？（はい／いいえ）';
+                // ステップを進める
+                currentState.step = 3;
+                // ユーザーにフォローアップの質問を送信
+                return client.replyMessage(event.replyToken, {
+                    type: 'text',
+                    text: followUpQuestionText
+                });
+            } else {
+                // はい／いいえ以外の回答へのエラーハンドリング
+                const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                return client.replyMessage(event.replyToken, {
+                    type: 'text',
+                    text: errorMessage
+                });
+            }
+            break;
+        case 2:
+            // ステップ 2 の処理を追加
+            // ...
 
+            break;
+        case 3:
+            // ステップ 3 の処理を追加
+            // ...
 
+            break;
+        // 他のステップに対する処理を追加できます
+    }
 
     // ユーザーの回答状態を更新
     userState[event.source.userId] = currentState;
