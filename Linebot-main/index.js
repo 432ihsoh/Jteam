@@ -32,6 +32,8 @@ app.post('/webhook', line.middleware(config), (req, res) => {
 });
 // ユーザーごとの回答状態を保持するオブジェクト
 let userState = {};
+const client = new line.Client(config);
+
 async function handleEvent(event) {
     // 以前の回答状態を取得するか、初期化する
     const currentState = userState[event.source.userId] || { step: 0 };
