@@ -51,14 +51,9 @@ async function handleEvent(event) {
 
     // 最初に戻るを処理
     if (userMessage === '最初に戻る') {
-        const restartText = '初めからやり直します。観光地をお探しですね。ではこれからいくつかの質問をしていきます。\n自然は好きですか？（はい／いいえ）';
-        // ステップを初めに戻す
-        currentState.step = 0;
-        // ユーザーに再スタートを通知
-        return client.replyMessage(event.replyToken, {
-            type: 'text',
-            text: restartText
-        });
+        // 質問プロセスを最初から始める
+        resetUserState(event.source.userId);
+        return Promise.resolve(null);
     }
 
     // 現在のステップに基づいて処理を分岐
@@ -124,6 +119,15 @@ async function handleEvent(event) {
 
     return Promise.resolve(null);
 }
+
+function resetUserState(userId) {
+    // ユーザーの回答状態を初期化
+    userState[userId] = { step: 0 };
+}
+
+app.listen(PORT);
+console.log(`Server running at ${PORT}`);
+
 
 app.listen(PORT);
 console.log(`Server running at ${PORT}`);
