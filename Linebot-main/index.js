@@ -165,7 +165,7 @@ async function handleEvent(event) {
         case 6: // 新しい質問のステップ
             if (userMessage === 'はい') {
                 // 'はい' に対する処理
-                const followUpQuestionText = '体を動かすのが好き？（はい／いいえ）';
+                const followUpQuestionText = 'カルチャーパーク？（はい／いいえ）';
                 // ステップを進める
                 currentState.step = 8; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
