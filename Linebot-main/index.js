@@ -85,7 +85,7 @@ async function handleEvent(event) {
                 });
             } else if (userMessage === 'いいえ') {
                 // 'いいえ' に対する処理
-                const followUpQuestionText = '温泉は好きですか？（はい／いいえ）';
+                const followUpQuestionText = '子供はいる？（はい／いいえ）';
                 // ステップを進める
                 currentState.step = 4; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
@@ -135,7 +135,7 @@ async function handleEvent(event) {
         case 4: // 新しい質問のステップ
             if (userMessage === 'はい') {
                 // 'はい' に対する処理
-                const followUpQuestionText = '子供がいる？（はい／いいえ）';
+                const followUpQuestionText = '体を動かして遊びたいですか？（はい／いいえ）';
                 // ステップを進める
                 currentState.step = 6; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
