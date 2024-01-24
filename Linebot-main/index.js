@@ -53,6 +53,7 @@ async function handleEvent(event) {
     // 現在のステップに基づいて処理を分岐
    // 現在のステップに基づいて処理を分岐
 // 現在のステップに基づいて処理を分岐
+// 現在のステップに基づいて処理を分岐
 switch (currentState.step) {
     case 0:
         if (userMessage === '観光地を探す') {
@@ -88,9 +89,19 @@ switch (currentState.step) {
                 type: 'text',
                 text: followUpQuestionText
             });
-        } else if (userMessage === '最初に戻る') {
+        } else {
+            // はい／いいえ以外の回答へのエラーハンドリング
+            const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+            return client.replyMessage(event.replyToken, {
+                type: 'text',
+                text: errorMessage
+            });
+        }
+        break;
+    case 2:
+        if (userMessage === '最初に戻る') {
             // '最初に戻る' に対する処理
-            const restartText = '初めからやり直します。観光地をお探しですね。ではこれからいくつかの質問をしていきます。\n自然は好きですか？（はい／いいえ）';
+            const restartText = '初めからやり直します。';
             // ステップを初めに戻す
             currentState.step = 0;
             // ユーザーに再スタートを通知
@@ -99,16 +110,17 @@ switch (currentState.step) {
                 text: restartText
             });
         } else {
-            // はい／いいえ／最初に戻る以外の回答へのエラーハンドリング
-            const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+            // '最初に戻る' 以外の回答へのエラーハンドリング
+            const errorMessage = '申し訳ありませんが、最初に戻るか現在の質問にお答えください。';
             return client.replyMessage(event.replyToken, {
                 type: 'text',
                 text: errorMessage
             });
         }
-        break;  // ここで break 文を追加
+        break;
     // 他のステップに対する処理を追加できます
 }
+
 
 
     // ユーザーの回答状態を更新
