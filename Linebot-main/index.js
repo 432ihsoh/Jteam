@@ -52,35 +52,48 @@ async function handleEvent(event) {
     // 現在のステップに基づいて処理を分岐
     switch (currentState.step) {
         case 0:
-            // 質問に対する処理
-            const questionText = '観光地をお探しですね。ではこれからいくつかの質問をしていきます。\n自然は好きですか？（はい／いいえ）';
-            // ステップを進める
-            currentState.step = 1;
-            // ユーザーに質問を送信
-            return client.replyMessage(event.replyToken, {
-                type: 'text',
-                text: questionText
-            });
-        case 1:
-            if (userMessage === 'はい' || userMessage === 'いいえ') {
-                // 'はい'や'いいえ' に対する処理
-                const responseText = userMessage === 'はい' ? '素晴らしいです！自然が好きな方にはたくさんの観光地がありますね。' :
-                                                              'そうですか、温泉は好きですか？（はい／いいえ）';
+            if (userMessage === '観光地を探す') {
+                // 質問に対する処理
+                const questionText = '観光地をお探しですね。ではこれからいくつかの質問をしていきます。\n自然は好きですか？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = userMessage === 'はい' ? 2 : 3;
+                currentState.step = 1;
+                // ユーザーに質問を送信
+                return client.replyMessage(event.replyToken, {
+                    type: 'text',
+                    text: questionText
+                });
+            }
+            break;
+        case 1:
+            if (userMessage === 'はい') {
+                // 'はい' に対する処理
+                const responseText = '素晴らしいです！自然が好きな方にはたくさんの観光地がありますね。';
+                // ステップを進める
+                currentState.step = 2;
                 // ユーザーに回答を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
                     text: responseText
                 });
+            } else if (userMessage === 'いいえ') {
+                // 'いいえ' に対する処理
+                const followUpQuestionText = 'そうですか、温泉は好きですか？（はい／いいえ）';
+                // ステップを進める
+                currentState.step = 3;
+                // ユーザーにフォローアップの質問を送信
+                return client.replyMessage(event.replyToken, {
+                    type: 'text',
+                    text: followUpQuestionText
+                });
             } else {
-                // ステップ1で'はい'や'いいえ'以外の回答へのエラーハンドリング
-                const errorMessage = '「はい」か「いいえ」でお答えください。';
+                // はい／いいえ以外の回答へのエラーハンドリング
+                const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
                     text: errorMessage
                 });
             }
+            break;
         // 他のステップに対する処理を追加できます
     }
 
@@ -89,7 +102,6 @@ async function handleEvent(event) {
 
     return Promise.resolve(null);
 }
-
 
 
 
