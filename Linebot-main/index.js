@@ -135,7 +135,7 @@ async function handleEvent(event) {
         case 4: // 新しい質問のステップ
             if (userMessage === 'はい') {
                 // 'はい' に対する処理
-                const followUpQuestionText = '温泉プールがある？（はい／いいえ）';
+                const followUpQuestionText = '子供がいる？（はい／いいえ）';
                 // ステップを進める
                 currentState.step = 6; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
@@ -165,7 +165,7 @@ async function handleEvent(event) {
         case 6: // 新しい質問のステップ
             if (userMessage === 'はい') {
                 // 'はい' に対する処理
-                const followUpQuestionText = '温泉プールで泳ぐのが好きですか？（はい／いいえ）';
+                const followUpQuestionText = '体を動かすのが好き？（はい／いいえ）';
                 // ステップを進める
                 currentState.step = 8; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
@@ -175,7 +175,7 @@ async function handleEvent(event) {
                 });
             } else if (userMessage === 'いいえ') {
                 // 'いいえ' に対する処理
-                const followUpQuestionText = '温泉プールでのんびりするのが好きですか？（はい／いいえ）';
+                const followUpQuestionText = 'リカちゃんキャッスル？（はい／いいえ）';
                 // ステップを進める
                 currentState.step = 9; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
@@ -205,7 +205,7 @@ async function handleEvent(event) {
                 });
             } else if (userMessage === 'いいえ') {
                 // 'いいえ' に対する処理
-                const followUpQuestionText = '新しい観光地を発見するのが好きですか？（はい／いいえ）';
+                const followUpQuestionText = '子供がすきそうですか？（はい／いいえ）';
                 // ステップを進める
                 currentState.step = 11; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
