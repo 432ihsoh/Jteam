@@ -519,9 +519,9 @@ case 13:
                     });
                 } else if (userMessage === 'いいえ') {
                     // 'いいえ' に対する処理
-                    const followUpQuestionText = '牡丹は？？（はい／いいえ）';
+                    const followUpQuestionText = '田村神社？（はい／いいえ）';
                     // ステップを進める
-                    currentState.step = 18; // 新しい質問のステップ
+                    currentState.step = 100; // 新しい質問のステップ
                     // ユーザーにフォローアップの質問を送信
                     return client.replyMessage(event.replyToken, {
                         type: 'text',
@@ -536,6 +536,66 @@ case 13:
                     });
                 }
                 break;
+                case 17:
+                    if (userMessage === 'はい') {
+                        // 'はい' に対する処理
+                        const followUpQuestionText = '三春滝桜？（はい／いいえ）';
+                        // ステップを進める
+                        currentState.step = 19; // 新しい質問のステップ
+                        // ユーザーにフォローアップの質問を送信
+                        return client.replyMessage(event.replyToken, {
+                            type: 'text',
+                            text: followUpQuestionText
+                        });
+                    } else if (userMessage === 'いいえ') {
+                        // 'いいえ' に対する処理
+                        const followUpQuestionText = '牡丹は？？（はい／いいえ）';
+                        // ステップを進める
+                        currentState.step = 20; // 新しい質問のステップ
+                        // ユーザーにフォローアップの質問を送信
+                        return client.replyMessage(event.replyToken, {
+                            type: 'text',
+                            text: followUpQuestionText
+                        });
+                    } else {
+                        // はい／いいえ以外の回答へのエラーハンドリング
+                        const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                        return client.replyMessage(event.replyToken, {
+                            type: 'text',
+                            text: errorMessage
+                        });
+                    }
+                    break;
+                    case 20:
+                        if (userMessage === 'はい') {
+                            // 'はい' に対する処理
+                            const followUpQuestionText = '須賀川牡丹園？（はい／いいえ）';
+                            // ステップを進める
+                            currentState.step = 19; // 新しい質問のステップ
+                            // ユーザーにフォローアップの質問を送信
+                            return client.replyMessage(event.replyToken, {
+                                type: 'text',
+                                text: followUpQuestionText
+                            });
+                        } else if (userMessage === 'いいえ') {
+                            // 'いいえ' に対する処理
+                            const followUpQuestionText = '布引高原ひまわり畑？（はい／いいえ）';
+                            // ステップを進める
+                            currentState.step = 20; // 新しい質問のステップ
+                            // ユーザーにフォローアップの質問を送信
+                            return client.replyMessage(event.replyToken, {
+                                type: 'text',
+                                text: followUpQuestionText
+                            });
+                        } else {
+                            // はい／いいえ以外の回答へのエラーハンドリング
+                            const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                            return client.replyMessage(event.replyToken, {
+                                type: 'text',
+                                text: errorMessage
+                            });
+                        }
+                        break;
                 
 
 case 14: // 新しい質問のステップ
