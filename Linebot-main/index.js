@@ -209,7 +209,7 @@ async function handleEvent(event) {
                     // 'いいえ' に対する処理
                     const followUpQuestionText = '動物が好き？（はい／いいえ）';
                     // ステップを進める
-                    currentState.step = 5; // 新しい質問のステップ
+                    currentState.step = 8; // 新しい質問のステップ
                     // ユーザーにフォローアップの質問を送信
                     return client.replyMessage(event.replyToken, {
                         type: 'text',
@@ -305,7 +305,7 @@ async function handleEvent(event) {
                     // 'いいえ' に対する処理
                     const followUpQuestionText = 'おはなみたい？（はい／いいえ）';
                     // ステップを進める
-                    currentState.step = 5; // 新しい質問のステップ
+                    currentState.step = 14; // 新しい質問のステップ
                     // ユーザーにフォローアップの質問を送信
                     return client.replyMessage(event.replyToken, {
                         type: 'text',
@@ -464,7 +464,44 @@ if (userMessage === 'はい') {
     currentState.step = 14; // 新しい質問のステップ
     // ユーザーにフォローアッ
 
+    } else { // はい／いいえ以外の回答へのエラーハンドリング
+        const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+        return client.replyMessage(event.replyToken, {
+            type: 'text',
+            text: errorMessage
+        });
     }
+    break;
+    
+case 14: // 新しい質問のステップ
+if (userMessage === 'はい') {
+    // 'はい' に対する処理（スペースパークに興味あり）
+    const responseText = 'みはるたきざくらorぬのひきこうげんorぼたんえん！';
+    // ステップを進める
+    currentState.step = 0; // 最初のステップに戻す
+    // ユーザーに回答を送信
+    return client.replyMessage(event.replyToken, {
+        type: 'text',
+        text: responseText
+    });
+} else if (userMessage === 'いいえ') {
+    // 'いいえ' に対する処理（スペースパークに興味なし）
+    const followUpQuestionText = '浄土松公園？';
+    // ステップを進める
+    currentState.step = 14; // 新しい質問のステップ
+    // ユーザーにフォローアッ
+
+    } else { // はい／いいえ以外の回答へのエラーハンドリング
+        const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+        return client.replyMessage(event.replyToken, {
+            type: 'text',
+            text: errorMessage
+        });
+    }
+    break;
+    
+
+    
 
     // ユーザーの回答状態を更新
     userState[event.source.userId] = currentState;
