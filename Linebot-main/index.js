@@ -228,7 +228,7 @@ async function handleEvent(event) {
 case 10: // 新しい質問のステップ
 if (userMessage === 'はい') {
     // 'はい' に対する処理
-    const followUpQuestionText = '郡山美術館に興味がありますか？（はい／いいえ）';
+    const followUpQuestionText = 'プールが付いてる？（はい／いいえ）';
     // ステップを進める
     currentState.step = 12; // 新しい質問のステップ
     // ユーザーにフォローアップの質問を送信
@@ -259,7 +259,7 @@ break;
 case 11: // 新しい質問のステップ
 if (userMessage === 'はい') {
     // 'はい' に対する処理
-    const followUpQuestionText = '郡山美術館に興味がありますか？（はい／いいえ）';
+    const followUpQuestionText = '？（はい／いいえ）';
     // ステップを進める
     currentState.step = 12; // 新しい質問のステップ
     // ユーザーにフォローアップの質問を送信
@@ -349,8 +349,89 @@ function resetUserState(userId) {
     userState[userId] = { step: 0 };
 }
 
+
 }
 
 app.listen(PORT);
 console.log(`Server running at ${PORT}`);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
