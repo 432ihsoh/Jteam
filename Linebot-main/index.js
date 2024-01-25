@@ -302,7 +302,7 @@ if (userMessage === 'はい') {
     });
 } else if (userMessage === 'いいえ') {
     // 'いいえ' に対する処理
-    const followUpQuestionText = 'スペースパークに興味がありますか？（はい／いいえ）';
+    const followUpQuestionText = '田村神社？（はい／いいえ）';
     // ステップを進める
     currentState.step = 13; // 新しい質問のステップ
     // ユーザーにフォローアップの質問を送信
