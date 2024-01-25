@@ -641,7 +641,14 @@ case 13:
                                     type:"text",
                                     text: errorMessage
                                 });
+                            } else {
+                                const errorMessage ='申し訳ありませんが、はいかいいえでお答えください';
+                                return client.replyMessage(event.replyToken,{
+                                    type:"text",
+                                    text: errorMessage
+                                });
                             }
+                            break
                                 
                             
 
