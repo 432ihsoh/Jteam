@@ -115,7 +115,7 @@ async function handleEvent(event) {
                 });
             } else if (userMessage === 'いいえ') {
                 // 'いいえ' に対する処理
-                const followUpQuestionText = '動物は好きですか？（はい／いいえ）';
+                const followUpQuestionText = '体を動かして遊びたいですか？（はい／いいえ）';
                 // ステップを進める
                 currentState.step = 5; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
@@ -132,6 +132,38 @@ async function handleEvent(event) {
                 });
             }
             break;
+
+            case 3:
+                if (userMessage === 'はい') {
+                    // 'はい' に対する処理
+                    const followUpQuestionText = '涼しいところがいい？（はい／いいえ）';
+                    // ステップを進める
+                    currentState.step = 4; // 新しい質問のステップ
+                    // ユーザーにフォローアップの質問を送信
+                    return client.replyMessage(event.replyToken, {
+                        type: 'text',
+                        text: followUpQuestionText
+                    });
+                } else if (userMessage === 'いいえ') {
+                    // 'いいえ' に対する処理
+                    const followUpQuestionText = '動物が好き？（はい／いいえ）';
+                    // ステップを進める
+                    currentState.step = 5; // 新しい質問のステップ
+                    // ユーザーにフォローアップの質問を送信
+                    return client.replyMessage(event.replyToken, {
+                        type: 'text',
+                        text: followUpQuestionText
+                    });
+                } else {
+                    // はい／いいえ以外の回答へのエラーハンドリング
+                    const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                    return client.replyMessage(event.replyToken, {
+                        type: 'text',
+                        text: errorMessage
+                    });
+                }
+                break;
+
         case 4: // 新しい質問のステップ
             if (userMessage === 'はい') {
                 // 'はい' に対する処理
@@ -162,6 +194,8 @@ async function handleEvent(event) {
                 });
             }
             break;
+          
+               
         case 6: // 新しい質問のステップ
             if (userMessage === 'はい') {
                 // 'はい' に対する処理
@@ -292,7 +326,7 @@ break;
 case 11: // 新しい質問のステップ
 if (userMessage === 'はい') {
     // 'はい' に対する処理
-    const followUpQuestionText = 'プールが付いてる？（はい／いいえ）';
+    const followUpQuestionText = 'プールで泳ぎたい？（はい／いいえ）';
     // ステップを進める
     currentState.step = 12; // 新しい質問のステップ
     // ユーザーにフォローアップの質問を送信
