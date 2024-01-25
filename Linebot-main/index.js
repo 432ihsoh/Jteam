@@ -175,7 +175,7 @@ async function handleEvent(event) {
                 });
             } else if (userMessage === 'いいえ') {
                 // 'いいえ' に対する処理
-                const followUpQuestionText = 'リカちゃんキャッスル？（はい／いいえ）';
+                const followUpQuestionText = '宇宙に興味ある？（はい／いいえ）';
                 // ステップを進める
                 currentState.step = 9; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
@@ -192,6 +192,9 @@ async function handleEvent(event) {
                 });
             }
             break;
+
+            
+            
         case 7: // 新しい質問のステップ
             if (userMessage === 'はい') {
                 // 'はい' に対する処理
@@ -222,13 +225,43 @@ async function handleEvent(event) {
                 });
             }
             break;
-        // 他のステップに対する処理を追加できます
-        // ...（前略）
+
+            case 9: // 新しい質問のステップ
+            if (userMessage === 'はい') {
+                // 'はい' に対する処理
+                const followUpQuestionText = 'スペースパークはどうですか？（はい／いいえ）';
+                // ステップを進める
+                currentState.step = 8; // 新しい質問のステップ
+                // ユーザーにフォローアップの質問を送信
+                return client.replyMessage(event.replyToken, {
+                    type: 'text',
+                    text: followUpQuestionText
+                });
+            } else if (userMessage === 'いいえ') {
+                // 'いいえ' に対する処理
+                const followUpQuestionText = 'リカちゃんキャッスルはどうですか？（はい／いいえ）';
+                // ステップを進める
+                currentState.step = 9; // 新しい質問のステップ
+                // ユーザーにフォローアップの質問を送信
+                return client.replyMessage(event.replyToken, {
+                    type: 'text',
+                    text: followUpQuestionText
+                });
+            } else {
+                // はい／いいえ以外の回答へのエラーハンドリング
+                const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                return client.replyMessage(event.replyToken, {
+                    type: 'text',
+                    text: errorMessage
+                });
+            }
+            break;
+       
 
 case 10: // 新しい質問のステップ
 if (userMessage === 'はい') {
     // 'はい' に対する処理
-    const followUpQuestionText = 'プールが付いてる？（はい／いいえ）';
+    const followUpQuestionText = '郡山美術館？（はい／いいえ）';
     // ステップを進める
     currentState.step = 12; // 新しい質問のステップ
     // ユーザーにフォローアップの質問を送信
@@ -259,7 +292,7 @@ break;
 case 11: // 新しい質問のステップ
 if (userMessage === 'はい') {
     // 'はい' に対する処理
-    const followUpQuestionText = '？（はい／いいえ）';
+    const followUpQuestionText = 'プールが付いてる？（はい／いいえ）';
     // ステップを進める
     currentState.step = 12; // 新しい質問のステップ
     // ユーザーにフォローアップの質問を送信
@@ -290,7 +323,7 @@ break;
 case 12: // 新しい質問のステップ
 if (userMessage === 'はい') {
     // 'はい' に対する処理（郡山美術館に興味あり）
-    const responseText = '郡山美術館は素晴らしいですね！';
+    const responseText = '湯ラックス温泉？';
     // ステップを進める
     currentState.step = 0; // 最初のステップに戻す
     // ユーザーに回答を送信
@@ -300,7 +333,7 @@ if (userMessage === 'はい') {
     });
 } else if (userMessage === 'いいえ') {
     // 'いいえ' に対する処理（郡山美術館に興味なし）
-    const followUpQuestionText = '他に興味がある場所はありますか？';
+    const followUpQuestionText = '磐梯熱海温泉？';
     // ステップを進める
     currentState.step = 14; // 新しい質問のステップ
     // ユーザーにフォローアップの質問を送信
