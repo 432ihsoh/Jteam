@@ -205,7 +205,7 @@ async function handleEvent(event) {
                 });
             } else if (userMessage === 'いいえ') {
                 // 'いいえ' に対する処理
-                const followUpQuestionText = '子供がすきそうですか？（はい／いいえ）';
+                const followUpQuestionText = '温泉は好きですか？（はい／いいえ）';
                 // ステップを進める
                 currentState.step = 11; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
