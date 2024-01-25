@@ -138,7 +138,7 @@ async function handleEvent(event) {
                     // 'はい' に対する処理
                     const followUpQuestionText = 'ポケモンマスターになりたいですか？（はい／いいえ）';
                     // ステップを進める
-                    currentState.step = 4; // 新しい質問のステップ
+                    currentState.step = 15; // 新しい質問のステップ
                     // ユーザーにフォローアップの質問を送信
                     return client.replyMessage(event.replyToken, {
                         type: 'text',
@@ -476,6 +476,36 @@ case 13:
         });
     }
     break;
+    case 15:
+                if (userMessage === 'はい') {
+                    // 'はい' に対する処理
+                    const followUpQuestionText = '開成山公園？（はい／いいえ）';
+                    // ステップを進める
+                    currentState.step = 15; // 新しい質問のステップ
+                    // ユーザーにフォローアップの質問を送信
+                    return client.replyMessage(event.replyToken, {
+                        type: 'text',
+                        text: followUpQuestionText
+                    });
+                } else if (userMessage === 'いいえ') {
+                    // 'いいえ' に対する処理
+                   
+                    // ステップを進める
+                    currentState.step = 8; // 新しい質問のステップ
+                    // ユーザーにフォローアップの質問を送信
+                    return client.replyMessage(event.replyToken, {
+                        type: 'text',
+                        text: followUpQuestionText
+                    });
+                } else {
+                    // はい／いいえ以外の回答へのエラーハンドリング
+                    const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                    return client.replyMessage(event.replyToken, {
+                        type: 'text',
+                        text: errorMessage
+                    });
+                }
+                break;
 
 case 14: // 新しい質問のステップ
 if (userMessage === 'はい') {
