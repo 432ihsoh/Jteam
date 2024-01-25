@@ -303,9 +303,9 @@ async function handleEvent(event) {
                     });
                 } else if (userMessage === 'いいえ') {
                     // 'いいえ' に対する処理
-                    const followUpQuestionText = 'おはなみたい？（はい／いいえ）';
+                    const followUpQuestionText = 'きれいな花は好き？（はい／いいえ）';
                     // ステップを進める
-                    currentState.step = 13; // 新しい質問のステップ
+                    currentState.step = 16; // 新しい質問のステップ
                     // ユーザーにフォローアップの質問を送信
                     return client.replyMessage(event.replyToken, {
                         type: 'text',
@@ -489,7 +489,7 @@ case 13:
                     });
                 } else if (userMessage === 'いいえ') {
                     // 'いいえ' に対する処理
-                   
+                    const followUpQuestionText = 'カルチャーパーク？（はい／いいえ）';
                     // ステップを進める
                     currentState.step = 8; // 新しい質問のステップ
                     // ユーザーにフォローアップの質問を送信
@@ -506,6 +506,66 @@ case 13:
                     });
                 }
                 break;
+                case 16:
+                if (userMessage === 'はい') {
+                    // 'はい' に対する処理
+                    const followUpQuestionText = '桜とかどう？（はい／いいえ）';
+                    // ステップを進める
+                    currentState.step = 17; // 新しい質問のステップ
+                    // ユーザーにフォローアップの質問を送信
+                    return client.replyMessage(event.replyToken, {
+                        type: 'text',
+                        text: followUpQuestionText
+                    });
+                } else if (userMessage === 'いいえ') {
+                    // 'いいえ' に対する処理
+                    const followUpQuestionText = '牡丹は？？（はい／いいえ）';
+                    // ステップを進める
+                    currentState.step = 18; // 新しい質問のステップ
+                    // ユーザーにフォローアップの質問を送信
+                    return client.replyMessage(event.replyToken, {
+                        type: 'text',
+                        text: followUpQuestionText
+                    });
+                } else {
+                    // はい／いいえ以外の回答へのエラーハンドリング
+                    const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                    return client.replyMessage(event.replyToken, {
+                        type: 'text',
+                        text: errorMessage
+                    });
+                }
+                break;case 17:
+                if (userMessage === 'はい') {
+                    // 'はい' に対する処理
+                    const followUpQuestionText = '三春滝桜？（はい／いいえ）';
+                    // ステップを進める
+                    currentState.step = 17; // 新しい質問のステップ
+                    // ユーザーにフォローアップの質問を送信
+                    return client.replyMessage(event.replyToken, {
+                        type: 'text',
+                        text: followUpQuestionText
+                    });
+                } else if (userMessage === 'いいえ') {
+                    // 'いいえ' に対する処理
+                    const followUpQuestionText = '牡丹は？？（はい／いいえ）';
+                    // ステップを進める
+                    currentState.step = 18; // 新しい質問のステップ
+                    // ユーザーにフォローアップの質問を送信
+                    return client.replyMessage(event.replyToken, {
+                        type: 'text',
+                        text: followUpQuestionText
+                    });
+                } else {
+                    // はい／いいえ以外の回答へのエラーハンドリング
+                    const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                    return client.replyMessage(event.replyToken, {
+                        type: 'text',
+                        text: errorMessage
+                    });
+                }
+                break;
+            
 
 case 14: // 新しい質問のステップ
 if (userMessage === 'はい') {
