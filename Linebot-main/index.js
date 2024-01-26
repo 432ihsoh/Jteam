@@ -751,13 +751,16 @@ case 13:
                                             case 25:
                                                 if (userMessage === 'はい') {
                                                     // 'はい' に対する処理
-                                                    const followUpQuestionText = 'カルチャーパークが見つかりました';
-                                            
+                                                    const followUpQuestionText = 'カルチャーパークが見つかりました。\nこちらは遊園地をはじめ、屋内遊び場や体育館などがある複合施設です。';
+                                                    
                                                     // 表示したいURL
                                                     const parkURL = 'https://www.koriyamaculturepark.com/';  // 実際のURLに置き換えてください
-                                            
+                                                    
+                                                    // 観光地の位置情報
+                                                    const mapLocationText = 'カルチャーパークの位置はこちら：\nhttps://maps.google.com/?q=37.36586207757779, 140.32952015147808'; // 実際の緯度と経度に置き換えてください
+                                                    
                                                     currentState.step = 31; // 新しい質問のステップ
-                                                    // ユーザーにフォローアップの質問とURLを送信
+                                                    // ユーザーにフォローアップの質問、URL、位置情報を送信
                                                     return client.replyMessage(event.replyToken, [
                                                         {
                                                             type: 'text',
@@ -766,11 +769,15 @@ case 13:
                                                         {
                                                             type: 'text',
                                                             text: parkURL
+                                                        },
+                                                        {
+                                                            type: 'text',
+                                                            text: mapLocationText
                                                         }
                                                     ]);
                                                 } else if (userMessage === 'いいえ') {
                                                     // 'いいえ' に対する処理
-                                                    const followUpQuestionText = '大堀相馬焼or　浄土松公園？（はい／いいえ）';
+                                                    const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
                                                     // ステップを進める
                                                     currentState.step = 22; // 新しい質問のステップ
                                                     // ユーザーにフォローアップの質問を送信
@@ -787,6 +794,8 @@ case 13:
                                                     });
                                                 }
                                                 break;
+                                            
+                                            
                                             
                                 
                             
