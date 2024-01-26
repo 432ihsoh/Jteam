@@ -751,7 +751,7 @@ case 13:
                                             case 25:
                                                 if (userMessage === 'はい') {
                                                     // 'はい' に対する処理
-                                                    const followUpQuestionText = 'カルチャーパークが見つかりました。\nこちらは遊園地をはじめ、屋内遊び場や体育館などがある複合施設です。';
+                                                    const followUpQuestionText = 'カルチャーパークが見つかりました。\nこちらは遊園地をはじめ、屋内遊び場や体育館などがある複合施設です。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
                                                     
                                                     // 表示したいURL
                                                     const parkURL = 'https://www.koriyamaculturepark.com/';  // 実際のURLに置き換えてください
