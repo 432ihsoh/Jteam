@@ -845,13 +845,13 @@ async function handleEvent(event) {
         case 26:
             if (userMessage === 'はい') {
                 // 'はい' に対する処理
-                const followUpQuestionText = '磐梯熱海温泉が見つかりました/nこちらは800年の歴史がある温泉旅館です。湯量が豊富でお肌に良い弱アルカリ泉が楽しめます。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
+                const followUpQuestionText = '磐梯熱海温泉が見つかりました\nこちらは800年の歴史がある温泉旅館です。湯量が豊富でお肌に良い弱アルカリ泉が楽しめます。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
 
                 // 表示したいURL
                 const parkURL = 'https://www.bandaiatami.or.jp/';  // 実際のURLに置き換えてください
 
                 // 観光地の位置情報
-                const mapLocationText = 'Location of the cultural park:\nhttps://maps.google.com/?q= 37.48113922956151, 140.27205601929367';
+                const mapLocationText = 'Location of the atami onsen:\nhttps://maps.google.com/?q= 37.48113922956151, 140.27205601929367';
                 // 実際の緯度と経度に置き換えてください
 
                 currentState.step = 31; // 新しい質問のステップ
