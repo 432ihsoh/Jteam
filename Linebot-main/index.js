@@ -77,7 +77,7 @@ async function handleEvent(event) {
                 // 'はい' に対する処理
                 const responseText = '子供はいる？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = Left;
+                currentState.step = 4;
                 // ユーザーに回答を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -428,7 +428,7 @@ async function handleEvent(event) {
                 });
             } else if (userMessage === 'いいえ') {
                 // 'いいえ' に対する処理（郡山美術館に興味なし）
-                const followUpQuestionText = '磐梯熱海温泉？';
+                const followUpQuestionText = '磐梯熱海温泉？（はい／いいえ）';
                 // ステップを進める
                 currentState.step = 26; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
