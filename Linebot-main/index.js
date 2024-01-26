@@ -77,7 +77,7 @@ async function handleEvent(event) {
                 // 'はい' に対する処理
                 const responseText = '子供はいる？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 2;
+                currentState.step = Left;
                 // ユーザーに回答を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -326,7 +326,7 @@ async function handleEvent(event) {
                 // 'はい' に対する処理
                 const followUpQuestionText = 'スペースパークはどうですか？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 8; // 新しい質問のステップ
+                currentState.step = 25; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -461,7 +461,7 @@ case 13:
         // 'いいえ' に対する処理
         const followUpQuestionText = '浄土松公園';
         // ステップを進める
-        currentState.step = 14; // 新しい質問のステップ
+        currentState.step = 25; // 新しい質問のステップ
         // ユーザーにフォローアップの質問を送信
         return client.replyMessage(event.replyToken, {
             type: 'text',
@@ -481,7 +481,7 @@ case 13:
                     // 'はい' に対する処理
                     const followUpQuestionText = '開成山公園？（はい／いいえ）';
                     // ステップを進める
-                    currentState.step = 15; // 新しい質問のステップ
+                    currentState.step = 24; // 新しい質問のステップ
                     // ユーザーにフォローアップの質問を送信
                     return client.replyMessage(event.replyToken, {
                         type: 'text',
@@ -656,7 +656,138 @@ case 13:
                                     });
                                 }
                                 break;
-                          
+
+                                case 23:
+                                    if (userMessage === 'はい') {
+                                        // 'はい' に対する処理
+                                        const followUpQuestionText = '果物狩り';
+                                        // ステップを進める
+                                        currentState.step = 31; // 新しい質問のステップ
+                                        // ユーザーにフォローアップの質問を送信
+                                        return client.replyMessage(event.replyToken, {
+                                            type: 'text',
+                                            text: followUpQuestionText
+                                        });
+                                    } else if (userMessage === 'いいえ') {
+                                        // 'いいえ' に対する処理
+                                        const followUpQuestionText = '大堀相馬焼or　      浄土松公園？（はい／いいえ）';
+                                        // ステップを進める
+                                        currentState.step = 22; // 新しい質問のステップ
+                                        // ユーザーにフォローアップの質問を送信
+                                        return client.replyMessage(event.replyToken, {
+                                            type: 'text',
+                                            text: followUpQuestionText
+                                        });
+                                    } else {
+                                        // はい／いいえ以外の回答へのエラーハンドリング
+                                        const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                                        return client.replyMessage(event.replyToken, {
+                                            type: 'text',
+                                            text: errorMessage
+                                        });
+                                    }
+                                    break;
+                                    case 21:
+                                        if (userMessage === 'はい') {
+                                            // 'はい' に対する処理
+                                            const followUpQuestionText = '阿武隈？（はい／いいえ）';
+                                            // ステップを進める
+                                            currentState.step = 31; // 新しい質問のステップ
+                                            // ユーザーにフォローアップの質問を送信
+                                            return client.replyMessage(event.replyToken, {
+                                                type: 'text',
+                                                text: followUpQuestionText
+                                            });
+                                        } else if (userMessage === 'いいえ') {
+                                            // 'いいえ' に対する処理
+                                            const followUpQuestionText = '果物狩りたい？（はい／いいえ）';
+                                            // ステップを進める
+                                            currentState.step = 22; // 新しい質問のステップ
+                                            // ユーザーにフォローアップの質問を送信
+                                            return client.replyMessage(event.replyToken, {
+                                                type: 'text',
+                                                text: followUpQuestionText
+                                            });
+                                        } else {
+                                            // はい／いいえ以外の回答へのエラーハンドリング
+                                            const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                                            return client.replyMessage(event.replyToken, {
+                                                type: 'text',
+                                                text: errorMessage
+                                            });
+                                        }
+                                        break;
+                                        case 22:
+                                            if (userMessage === 'はい') {
+                                                // 'はい' に対する処理
+                                                const followUpQuestionText = '果物狩り';
+                                                // ステップを進める
+                                                currentState.step = 31; // 新しい質問のステップ
+                                                // ユーザーにフォローアップの質問を送信
+                                                return client.replyMessage(event.replyToken, {
+                                                    type: 'text',
+                                                    text: followUpQuestionText
+                                                });
+                                            } else if (userMessage === 'いいえ') {
+                                                // 'いいえ' に対する処理
+                                                const followUpQuestionText = '大堀相馬焼or　      浄土松公園？（はい／いいえ）';
+                                                // ステップを進める
+                                                currentState.step = 22; // 新しい質問のステップ
+                                                // ユーザーにフォローアップの質問を送信
+                                                return client.replyMessage(event.replyToken, {
+                                                    type: 'text',
+                                                    text: followUpQuestionText
+                                                });
+                                            } else {
+                                                // はい／いいえ以外の回答へのエラーハンドリング
+                                                const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                                                return client.replyMessage(event.replyToken, {
+                                                    type: 'text',
+                                                    text: errorMessage
+                                                });
+                                            }
+                                            break;
+            
+                                            case 25:
+                                                if (userMessage === 'はい') {
+                                                    // 'はい' に対する処理
+                                                    const followUpQuestionText = 'カルチャーパークが見つかりました';
+                                            
+                                                    // 表示したいURL
+                                                    const parkURL = 'https://www.koriyamaculturepark.com/';  // 実際のURLに置き換えてください
+                                            
+                                                    currentState.step = 31; // 新しい質問のステップ
+                                                    // ユーザーにフォローアップの質問とURLを送信
+                                                    return client.replyMessage(event.replyToken, [
+                                                        {
+                                                            type: 'text',
+                                                            text: followUpQuestionText
+                                                        },
+                                                        {
+                                                            type: 'text',
+                                                            text: parkURL
+                                                        }
+                                                    ]);
+                                                } else if (userMessage === 'いいえ') {
+                                                    // 'いいえ' に対する処理
+                                                    const followUpQuestionText = '大堀相馬焼or　浄土松公園？（はい／いいえ）';
+                                                    // ステップを進める
+                                                    currentState.step = 22; // 新しい質問のステップ
+                                                    // ユーザーにフォローアップの質問を送信
+                                                    return client.replyMessage(event.replyToken, {
+                                                        type: 'text',
+                                                        text: followUpQuestionText
+                                                    });
+                                                } else {
+                                                    // はい／いいえ以外の回答へのエラーハンドリング
+                                                    const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                                                    return client.replyMessage(event.replyToken, {
+                                                        type: 'text',
+                                                        text: errorMessage
+                                                    });
+                                                }
+                                                break;
+                                            
                                 
                             
 
