@@ -231,7 +231,7 @@ async function handleEvent(event) {
                 // 'はい' に対する処理
                 const followUpQuestionText = 'カルチャーパーク？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 8; // 新しい質問のステップ
+                currentState.step = 25; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
