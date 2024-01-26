@@ -295,7 +295,7 @@ async function handleEvent(event) {
                 // 'はい' に対する処理
                 const followUpQuestionText = 'ふれあい牧場？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 4; // 新しい質問のステップ
+                currentState.step = 28; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -399,7 +399,7 @@ async function handleEvent(event) {
                 // 'いいえ' に対する処理
                 const followUpQuestionText = '田村神社？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 1; // 新しい質問のステップ
+                currentState.step = 31; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -420,7 +420,7 @@ async function handleEvent(event) {
                 // 'はい' に対する処理（郡山美術館に興味あり）
                 const responseText = '湯ラックス温泉？';
                 // ステップを進める
-                currentState.step = 0; // 最初のステップに戻す
+                currentState.step = 29; // 最初のステップに戻す
                 // ユーザーに回答を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -430,7 +430,7 @@ async function handleEvent(event) {
                 // 'いいえ' に対する処理（郡山美術館に興味なし）
                 const followUpQuestionText = '磐梯熱海温泉？';
                 // ステップを進める
-                currentState.step = 1; // 新しい質問のステップ
+                currentState.step = 26; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -936,6 +936,242 @@ async function handleEvent(event) {
                 });
             }
             break;
+            case 28:
+                if (userMessage === 'はい') {
+                    // 'はい' に対する処理
+                    const followUpQuestionText = '石筵ふれあい牧場が見つかりました/n こちらは動物と触れ合うことができる憩いの場です。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
+    
+                    // 表示したいURL
+                    const parkURL = 'https://www.fureai-bokujo.jp/';  // 実際のURLに置き換えてください
+    
+                    // 観光地の位置情報
+                    const mapLocationText = 'Location of the cultural park:\nhttps://maps.google.com/?q= 37.56045303410075, 140.25831356516093';
+                    // 実際の緯度と経度に置き換えてください
+    
+                    currentState.step = 31; // 新しい質問のステップ
+                    // ユーザーにフォローアップの質問、URL、位置情報を送信
+                    return client.replyMessage(event.replyToken, [
+                        {
+                            type: 'text',
+                            text: followUpQuestionText
+                        },
+                        {
+                            type: 'text',
+                            text: parkURL
+                        },
+                        {
+                            type: 'text',
+                            text: mapLocationText
+                        }
+                    ]);
+                } else if (userMessage === 'いいえ') {
+                    // 'いいえ' に対する処理
+                    const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                    // ステップを進める
+                    currentState.step = 22; // 新しい質問のステップ
+                    // ユーザーにフォローアップの質問を送信
+                    return client.replyMessage(event.replyToken, {
+                        type: 'text',
+                        text: followUpQuestionText
+                    });
+                } else {             
+                    const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                    return client.replyMessage(event.replyToken, {
+                        type: 'text',
+                        text: errorMessage
+                    });
+                }
+                break;
+                case 29:
+                    if (userMessage === 'はい') {
+                        // 'はい' に対する処理
+                        const followUpQuestionText = 'ユラックス(熱海)が見つかりました/nこちらはコンベンションとスポーツ施設に温泉機能を組み合わせた多目的な施設です。隣接するアイスアリーナではスケートも楽しめます。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
+        
+                        // 表示したいURL
+                        const parkURL = 'https://www.yracs.jp/';  // 実際のURLに置き換えてください
+        
+                        // 観光地の位置情報
+                        const mapLocationText = 'Location of the cultural park:\nhttps://maps.google.com/?q=  37.48090300678727, 140.27820545741048';
+                        // 実際の緯度と経度に置き換えてください
+        
+                        currentState.step = 31; // 新しい質問のステップ
+                        // ユーザーにフォローアップの質問、URL、位置情報を送信
+                        return client.replyMessage(event.replyToken, [
+                            {
+                                type: 'text',
+                                text: followUpQuestionText
+                            },
+                            {
+                                type: 'text',
+                                text: parkURL
+                            },
+                            {
+                                type: 'text',
+                                text: mapLocationText
+                            }
+                        ]);
+                    } else if (userMessage === 'いいえ') {
+                        // 'いいえ' に対する処理
+                        const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                        // ステップを進める
+                        currentState.step = 22; // 新しい質問のステップ
+                        // ユーザーにフォローアップの質問を送信
+                        return client.replyMessage(event.replyToken, {
+                            type: 'text',
+                            text: followUpQuestionText
+                        });
+                    } else {
+                        // はい／いいえ以外の回答へのエラーハンドリング
+                        const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                        return client.replyMessage(event.replyToken, {
+                            type: 'text',
+                            text: errorMessage
+                        });
+                    }
+                    break;
+                    case 30:
+                        if (userMessage === 'はい') {
+                            // 'はい' に対する処理
+                            const followUpQuestionText = 'ユラックス(熱海)が見つかりました/nこちらはコンベンションとスポーツ施設に温泉機能を組み合わせた多目的な施設です。隣接するアイスアリーナではスケートも楽しめます。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
+            
+                            // 表示したいURL
+                            const parkURL = 'https://www.yracs.jp/';  // 実際のURLに置き換えてください
+            
+                            // 観光地の位置情報
+                            const mapLocationText = 'Location of the cultural park:\nhttps://maps.google.com/?q=  37.48090300678727, 140.27820545741048';
+                            // 実際の緯度と経度に置き換えてください
+            
+                            currentState.step = 31; // 新しい質問のステップ
+                            // ユーザーにフォローアップの質問、URL、位置情報を送信
+                            return client.replyMessage(event.replyToken, [
+                                {
+                                    type: 'text',
+                                    text: followUpQuestionText
+                                },
+                                {
+                                    type: 'text',
+                                    text: parkURL
+                                },
+                                {
+                                    type: 'text',
+                                    text: mapLocationText
+                                }
+                            ]);
+                        } else if (userMessage === 'いいえ') {
+                            // 'いいえ' に対する処理
+                            const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                            // ステップを進める
+                            currentState.step = 22; // 新しい質問のステップ
+                            // ユーザーにフォローアップの質問を送信
+                            return client.replyMessage(event.replyToken, {
+                                type: 'text',
+                                text: followUpQuestionText
+                            });
+                        } else {
+                            // はい／いいえ以外の回答へのエラーハンドリング
+                            const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                            return client.replyMessage(event.replyToken, {
+                                type: 'text',
+                                text: errorMessage
+                            });
+                        }
+                        break;
+                        case 31:
+                            if (userMessage === 'はい') {
+                                // 'はい' に対する処理
+                                const followUpQuestionText = ' 田村神社が見つかりました\nこちらは郡山市の歴史ある神社が楽しめます。。隣接するアイスアリーナではスケートも楽しめます。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
+                
+                                // 表示したいURL
+                                const parkURL = 'https://akutsu-tamurajinjya.jimdofree.com/';  // 実際のURLに置き換えてください
+                
+                                // 観光地の位置情報
+                                const mapLocationText = 'Location of the cultural park:\nhttps://maps.google.com/?q=  37.33852712566796, 140.4064579244891';
+                                // 実際の緯度と経度に置き換えてください
+                
+                                currentState.step = 31; // 新しい質問のステップ
+                                // ユーザーにフォローアップの質問、URL、位置情報を送信
+                                return client.replyMessage(event.replyToken, [
+                                    {
+                                        type: 'text',
+                                        text: followUpQuestionText
+                                    },
+                                    {
+                                        type: 'text',
+                                        text: parkURL
+                                    },
+                                    {
+                                        type: 'text',
+                                        text: mapLocationText
+                                    }
+                                ]);
+                            } else if (userMessage === 'いいえ') {
+                                // 'いいえ' に対する処理
+                                const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                                // ステップを進める
+                                currentState.step = 22; // 新しい質問のステップ
+                                // ユーザーにフォローアップの質問を送信
+                                return client.replyMessage(event.replyToken, {
+                                    type: 'text',
+                                    text: followUpQuestionText
+                                });
+                            } else {
+                                // はい／いいえ以外の回答へのエラーハンドリング
+                                const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                                return client.replyMessage(event.replyToken, {
+                                    type: 'text',
+                                    text: errorMessage
+                                });
+                            }
+                            break;
+                            case 32:
+                                if (userMessage === 'はい') {
+                                    // 'はい' に対する処理
+                                    const followUpQuestionText = ' 三春滝桜が見つかりましたこちらは国の天然記念物に指定されている、日本三大桜の一つです。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
+                    
+                                    // 表示したいURL
+                                    const parkURL = 'https://miharukoma.com/experience/183/';  // 実際のURLに置き換えてください
+                    
+                                    // 観光地の位置情報
+                                    const mapLocationText = 'Location of the cultural park:\nhttps://maps.google.com/?q=  37.40788850628246, 140.50014756867017';
+                                    // 実際の緯度と経度に置き換えてください
+                    
+                                    currentState.step = 31; // 新しい質問のステップ
+                                    // ユーザーにフォローアップの質問、URL、位置情報を送信
+                                    return client.replyMessage(event.replyToken, [
+                                        {
+                                            type: 'text',
+                                            text: followUpQuestionText
+                                        },
+                                        {
+                                            type: 'text',
+                                            text: parkURL
+                                        },
+                                        {
+                                            type: 'text',
+                                            text: mapLocationText
+                                        }
+                                    ]);
+                                } else if (userMessage === 'いいえ') {
+                                    // 'いいえ' に対する処理
+                                    const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                                    // ステップを進める
+                                    currentState.step = 22; // 新しい質問のステップ
+                                    // ユーザーにフォローアップの質問を送信
+                                    return client.replyMessage(event.replyToken, {
+                                        type: 'text',
+                                        text: followUpQuestionText
+                                    });
+                                } else {
+                                    // はい／いいえ以外の回答へのエラーハンドリング
+                                    const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                                    return client.replyMessage(event.replyToken, {
+                                        type: 'text',
+                                        text: errorMessage
+                                    });
+                                }
+                                break;
+                            
+                    
 
 
 
