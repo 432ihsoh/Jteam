@@ -757,7 +757,7 @@ case 13:
                                                     const parkURL = 'https://www.koriyamaculturepark.com/';  // 実際のURLに置き換えてください
                                                     
                                                     // 観光地の位置情報
-                                                    const mapLocationText = 'カルチャーパークの位置はこちら：\nhttps://maps.google.com/?q=37.36586207757779, 140.32952015147808'; // 実際の緯度と経度に置き換えてください
+                                                    const mapLocationText = 'カルチャーパークの位置はこちら：\nhttps://maps.google.com/?q=37.36588765864892 140.3295308803135'; // 実際の緯度と経度に置き換えてください
                                                     
                                                     currentState.step = 31; // 新しい質問のステップ
                                                     // ユーザーにフォローアップの質問、URL、位置情報を送信
