@@ -946,7 +946,8 @@ async function handleEvent(event) {
                     const parkURL = 'https://www.city.koriyama.lg.jp/soshiki/132/3252.html';  // 実際のURLに置き換えてください
     
                     // 観光地の位置情報
-                    const mapLocationText = ' 開成山公園:https://maps.google.com/?q= 37.39817472246648, 140.35831603983428';
+                    const mapLocationText = ' 開成山公園の位置情報 https://www.google.com/maps?q=37.39817472246648,140.35831603983428';
+                    
                     // 実際の緯度と経度に置き換えてください
     
                     currentState.step = 31; // 新しい質問のステップ
@@ -992,7 +993,8 @@ async function handleEvent(event) {
                         const parkURL = 'https://www.yracs.jp/';  // 実際のURLに置き換えてください
         
                         // 観光地の位置情報
-                        const mapLocationText = 'Location of the ュラックス温泉:\nhttps://maps.google.com/?q=  37.48056846776862, 140.27806781100344';
+                       const mapLocationText = 'ユラックス(熱海)の位置情報: https://www.google.com/maps?q=37.48056846776862,140.27806781100344';
+                        
                         // 実際の緯度と経度に置き換えてください
         
                         currentState.step = 31; // 新しい質問のステップ
