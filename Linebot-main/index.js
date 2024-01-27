@@ -461,7 +461,7 @@ async function handleEvent(event) {
                 // 'いいえ' に対する処理
                 const followUpQuestionText = '浄土松公園';
                 // ステップを進める
-                currentState.step = 25; // 新しい質問のステップ
+                currentState.step = 33; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -521,7 +521,7 @@ async function handleEvent(event) {
                 // 'いいえ' に対する処理
                 const followUpQuestionText = '田村神社？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 100; // 新しい質問のステップ
+                currentState.step = 31; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -541,7 +541,7 @@ async function handleEvent(event) {
                 // 'はい' に対する処理
                 const followUpQuestionText = '三春滝桜？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 19; // 新しい質問のステップ
+                currentState.step = 32; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -571,7 +571,7 @@ async function handleEvent(event) {
                 // 'はい' に対する処理
                 const followUpQuestionText = '須賀川牡丹園？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 19; // 新しい質問のステップ
+                currentState.step = 34; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -1183,7 +1183,9 @@ async function handleEvent(event) {
                                         const parkURL = 'https://www.city.koriyama.lg.jp/soshiki/132/3264.html';  // 実際のURLに置き換えてください
                         
                                         // 観光地の位置情報
-                                        const mapLocationText = `あぶくま洞の位置情報: 140.6737472127106\n\nGoogle マップで場所を見る: https://www.google.com/maps?q=37.345014657221576,140.6737472127106`;
+                                        const mapLocationText = `浄土松公園の位置情報:マップで場所を見る: https://www.google.com/maps?q=37.389554537172714,140.27645000730215`;
+
+                                        
 
                                         // 実際の緯度と経度に置き換えてください
                         
@@ -1222,6 +1224,55 @@ async function handleEvent(event) {
                                         });
                                     }
                                     break;
+                                    case 34:
+                                        if (userMessage === 'はい') {
+                                            // 'はい' に対する処理
+                                            const followUpQuestionText = '須賀川牡丹園が見つかりました こちらは全国で唯一国指定名勝に指定された牡丹園です。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
+                            
+                                            // 表示したいURL
+                                            const parkURL = 'https://www.botan.or.jp/';  // 実際のURLに置き換えてください
+                            
+                                            // 観光地の位置情報
+                                            const mapLocationText = `須賀川牡丹園の位置情報マップで場所を見る: https://www.google.com/maps?q=37.273946517540544,140.38942122768646`;
+
+    
+                                            // 実際の緯度と経度に置き換えてください
+                            
+                                            currentState.step = 31; // 新しい質問のステップ
+                                            // ユーザーにフォローアップの質問、URL、位置情報を送信
+                                            return client.replyMessage(event.replyToken, [
+                                                {
+                                                    type: 'text',
+                                                    text: followUpQuestionText
+                                                },
+                                                {
+                                                    type: 'text',
+                                                    text: parkURL
+                                                },
+                                                {
+                                                    type: 'text',
+                                                    text: mapLocationText
+                                                }
+                                            ]);
+                                        } else if (userMessage === 'いいえ') {
+                                            // 'いいえ' に対する処理
+                                            const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                                            // ステップを進める
+                                            currentState.step = 22; // 新しい質問のステップ
+                                            // ユーザーにフォローアップの質問を送信
+                                            return client.replyMessage(event.replyToken, {
+                                                type: 'text',
+                                                text: followUpQuestionText
+                                            });
+                                        } else {
+                                            // はい／いいえ以外の回答へのエラーハンドリング
+                                            const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                                            return client.replyMessage(event.replyToken, {
+                                                type: 'text',
+                                                text: errorMessage
+                                            });
+                                        }
+                                        break;
                              
 
                             
