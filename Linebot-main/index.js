@@ -1133,7 +1133,7 @@ async function handleEvent(event) {
                                     const parkURL = 'https://miharukoma.com/experience/183/';  // 実際のURLに置き換えてください
                     
                                     // 観光地の位置情報
-                                    const mapLocationText = 'Location of the cultural park:\nhttps://maps.google.com/?q=  37.40788850628246, 140.50014756867017';
+                                    const mapLocationText = 'Location of the 三春滝桜:\nhttps://maps.google.com/?q=  37.40788850628246, 140.50014756867017';
                                     // 実際の緯度と経度に置き換えてください
                     
                                     currentState.step = 31; // 新しい質問のステップ
