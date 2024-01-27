@@ -481,7 +481,7 @@ async function handleEvent(event) {
                 // 'はい' に対する処理
                 const followUpQuestionText = '開成山公園？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 24; // 新しい質問のステップ
+                currentState.step = 28; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -899,7 +899,7 @@ async function handleEvent(event) {
                 const parkURL = 'https://www.fureai-bokujo.jp/';  // 実際のURLに置き換えてください
 
                 // 観光地の位置情報
-                const mapLocationText = `石筵ふれあい牧場の位置情報: https://www.google.com/maps?q=37.56045303410075,140.25831356516093`;
+                const mapLocationText = `石筵ふれあい牧場の位置情報:: https://www.google.com/maps?q=37.56036770392612, 140.25822622080534`;
 
 
                 currentState.step = 31; // 新しい質問のステップ
@@ -940,13 +940,13 @@ async function handleEvent(event) {
             case 28:
                 if (userMessage === 'はい') {
                     // 'はい' に対する処理
-                    const followUpQuestionText = '石筵ふれあい牧場が見つかりました/n こちらは動物と触れ合うことができる憩いの場です。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
+                    const followUpQuestionText = '開成山公園が見つかりました こちらは西の公園部分と東のスポーツ部分で構成されている公園です。現在公園部分にはラッキー公園が開園されており、お子様とも楽しむことができます。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
     
                     // 表示したいURL
-                    const parkURL = 'https://www.fureai-bokujo.jp/';  // 実際のURLに置き換えてください
+                    const parkURL = 'https://www.city.koriyama.lg.jp/soshiki/132/3252.html';  // 実際のURLに置き換えてください
     
                     // 観光地の位置情報
-                    const mapLocationText = 'Location of the cultural park:\nhttps://maps.google.com/?q= 37.56045303410075, 140.25831356516093';
+                    const mapLocationText = 'Location of the 開成山公園:\nhttps://maps.google.com/?q= 37.39817472246648, 140.35831603983428';
                     // 実際の緯度と経度に置き換えてください
     
                     currentState.step = 31; // 新しい質問のステップ
@@ -992,7 +992,7 @@ async function handleEvent(event) {
                         const parkURL = 'https://www.yracs.jp/';  // 実際のURLに置き換えてください
         
                         // 観光地の位置情報
-                        const mapLocationText = 'Location of the cultural park:\nhttps://maps.google.com/?q=  37.48090300678727, 140.27820545741048';
+                        const mapLocationText = 'Location of the ュラックス温泉:\nhttps://maps.google.com/?q=  37.48056846776862, 140.27806781100344';
                         // 実際の緯度と経度に置き換えてください
         
                         currentState.step = 31; // 新しい質問のステップ
