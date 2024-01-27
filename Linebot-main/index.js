@@ -1035,13 +1035,14 @@ async function handleEvent(event) {
                     case 30:
                         if (userMessage === 'はい') {
                             // 'はい' に対する処理
-                            const followUpQuestionText = 'ユラックス(熱海)が見つかりました/nこちらはコンベンションとスポーツ施設に温泉機能を組み合わせた多目的な施設です。隣接するアイスアリーナではスケートも楽しめます。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
+                            const followUpQuestionText = 'あぶくま洞が見つかりましたこちらは様々な鍾乳洞が観賞でき、大自然の歴史が楽しめます。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
             
                             // 表示したいURL
-                            const parkURL = 'https://www.yracs.jp/';  // 実際のURLに置き換えてください
+                            const parkURL = 'https://abukumado.com/';  // 実際のURLに置き換えてください
             
                             // 観光地の位置情報
-                            const mapLocationText = 'Location of the cultural park:\nhttps://maps.google.com/?q=  37.48090300678727, 140.27820545741048';
+                            const mapLocationText = `あぶくま洞の位置情報マップで場所を見る: https://www.google.com/maps?q=37.345014657221576,140.6737472127106`;
+
                             // 実際の緯度と経度に置き換えてください
             
                             currentState.step = 31; // 新しい質問のステップ
@@ -1173,6 +1174,56 @@ async function handleEvent(event) {
                                     });
                                 }
                                 break;
+                                case 33:
+                                    if (userMessage === 'はい') {
+                                        // 'はい' に対する処理
+                                        const followUpQuestionText = '浄土松公園が見つかりました こちらは松の緑が点在する風景が日本三景の松島に似ていることから「陸の松島」と呼ばれており、桜やバーベキューが楽しめます\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
+                        
+                                        // 表示したいURL
+                                        const parkURL = 'https://www.city.koriyama.lg.jp/soshiki/132/3264.html';  // 実際のURLに置き換えてください
+                        
+                                        // 観光地の位置情報
+                                        const mapLocationText = `あぶくま洞の位置情報: 140.6737472127106\n\nGoogle マップで場所を見る: https://www.google.com/maps?q=37.345014657221576,140.6737472127106`;
+
+                                        // 実際の緯度と経度に置き換えてください
+                        
+                                        currentState.step = 31; // 新しい質問のステップ
+                                        // ユーザーにフォローアップの質問、URL、位置情報を送信
+                                        return client.replyMessage(event.replyToken, [
+                                            {
+                                                type: 'text',
+                                                text: followUpQuestionText
+                                            },
+                                            {
+                                                type: 'text',
+                                                text: parkURL
+                                            },
+                                            {
+                                                type: 'text',
+                                                text: mapLocationText
+                                            }
+                                        ]);
+                                    } else if (userMessage === 'いいえ') {
+                                        // 'いいえ' に対する処理
+                                        const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                                        // ステップを進める
+                                        currentState.step = 22; // 新しい質問のステップ
+                                        // ユーザーにフォローアップの質問を送信
+                                        return client.replyMessage(event.replyToken, {
+                                            type: 'text',
+                                            text: followUpQuestionText
+                                        });
+                                    } else {
+                                        // はい／いいえ以外の回答へのエラーハンドリング
+                                        const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                                        return client.replyMessage(event.replyToken, {
+                                            type: 'text',
+                                            text: errorMessage
+                                        });
+                                    }
+                                    break;
+                             
+
                             
                     
 
