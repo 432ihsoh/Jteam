@@ -851,7 +851,8 @@ async function handleEvent(event) {
                     const parkURL = 'https://www.bandaiatami.or.jp/';  // 実際のURLに置き換えてください
             
                     // 観光地の位置情報
-                    const mapLocationText = '熱海温泉の位置情報:\n緯度: 37.481183901834655\n経度: 140.27217528978971';
+                  const mapLocationText = `熱海温泉の位置情報:: https://www.google.com/maps?q=37.481183901834655,140.27217528978971`;
+                    
             
                     currentState.step = 31; // 新しい質問のステップ
                     // ユーザーにフォローアップの質問、URL、位置情報を送信
