@@ -899,8 +899,8 @@ async function handleEvent(event) {
                 const parkURL = 'https://www.fureai-bokujo.jp/';  // 実際のURLに置き換えてください
 
                 // 観光地の位置情報
-                const mapLocationText = 'Location of the cultural park:\nhttps://maps.google.com/?q= 37.56045303410075, 140.25831356516093';
-                // 実際の緯度と経度に置き換えてください
+                const mapLocationText = `石筵ふれあい牧場の位置情報: https://www.google.com/maps?q=37.56045303410075,140.25831356516093`;
+
 
                 currentState.step = 31; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問、URL、位置情報を送信
