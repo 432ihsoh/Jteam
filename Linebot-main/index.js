@@ -77,7 +77,7 @@ async function handleEvent(event) {
                 // 'はい' に対する処理
                 const responseText = '子供はいる？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 4;
+                currentState.step = 3;
                 // ユーザーに回答を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -1089,7 +1089,7 @@ async function handleEvent(event) {
                                 const parkURL = 'https://akutsu-tamurajinjya.jimdofree.com/';  // 実際のURLに置き換えてください
                 
                                 // 観光地の位置情報
-                                const mapLocationText = 'Location of the cultural park:\nhttps://maps.google.com/?q=  37.33852712566796, 140.4064579244891';
+                                const mapLocationText = 'Location of the cultural park:https://maps.google.com/?q=  37.33852712566796, 140.4064579244891';
                                 // 実際の緯度と経度に置き換えてください
                 
                                 currentState.step = 31; // 新しい質問のステップ
@@ -1136,7 +1136,7 @@ async function handleEvent(event) {
                                     const parkURL = 'https://miharukoma.com/experience/183/';  // 実際のURLに置き換えてください
                     
                                     // 観光地の位置情報
-                                    const mapLocationText = '三春滝桜:\nhttps://maps.google.com/?q=  37.40788850628246, 140.50014756867017';
+                                    const mapLocationText = '三春滝桜:https://maps.google.com/?q=  37.40788850628246, 140.50014756867017';
                                     // 実際の緯度と経度に置き換えてください
                     
                                     currentState.step = 31; // 新しい質問のステップ
@@ -1177,7 +1177,7 @@ async function handleEvent(event) {
                                 case 33:
                                     if (userMessage === 'はい') {
                                         // 'はい' に対する処理
-                                        const followUpQuestionText = '浄土松公園が見つかりました こちらは松の緑が点在する風景が日本三景の松島に似ていることから「陸の松島」と呼ばれており、桜やバーベキューが楽しめます\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
+                                        const followUpQuestionText = '浄土松公園が見つかりました こちらは松の緑が点在する風景が日本三景の松島に似ていることから「陸の松島」と呼ばれており、桜やバーベキューが楽し めます\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
                         
                                         // 表示したいURL
                                         const parkURL = 'https://www.city.koriyama.lg.jp/soshiki/132/3264.html';  // 実際のURLに置き換えてください
