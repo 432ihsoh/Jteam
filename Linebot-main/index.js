@@ -77,7 +77,7 @@ async function handleEvent(event) {
                 // 'はい' に対する処理
                 const responseText = '子供はいる？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 3;
+                currentState.step = 2;
                 // ユーザーに回答を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
