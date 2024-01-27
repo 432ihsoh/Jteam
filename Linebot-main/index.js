@@ -1239,7 +1239,9 @@ async function handleEvent(event) {
                                                 const parkURL = 'https://www.city.koriyama.lg.jp/site/artmuseum/';  // 実際のURLに置き換えてください
                                 
                                                 // 観光地の位置情報
-                                                const mapLocationText = `郡山美術館の位置情報マップで場所を見る: https://www.google.com/maps?q=37.39340055458103, 140.41969479196064`;
+                                                const mapLocationText = `郡山市立美術館の位置情報 https://www.google.com/maps?q=37.393340915210814,140.41980208465822`;
+
+                                              
     
         
                                                 // 実際の緯度と経度に置き換えてください
