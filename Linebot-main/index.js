@@ -169,7 +169,7 @@ async function handleEvent(event) {
                 // 'はい' に対する処理
                 const followUpQuestionText = '体を動かして遊びたいですか？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 6; // 新しい質問のステップ
+                currentState.step = 3; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
