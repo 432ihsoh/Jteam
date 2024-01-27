@@ -842,53 +842,53 @@ async function handleEvent(event) {
                 });
             }
             break;
-        case 26:
-            if (userMessage === 'はい') {
-                // 'はい' に対する処理
-                const followUpQuestionText = '磐梯熱海温泉が見つかりました\nこちらは800年の歴史がある温泉旅館です。湯量が豊富でお肌に良い弱アルカリ泉が楽しめます。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
-
-                // 表示したいURL
-                const parkURL = 'https://www.bandaiatami.or.jp/';  // 実際のURLに置き換えてください
-
-                // 観光地の位置情報
-                const mapLocationText = 'Location of the atami onsen:\nhttps://maps.google.com/?q= 37.48113922956151, 140.27205601929367';
-                // 実際の緯度と経度に置き換えてください
-
-                currentState.step = 31; // 新しい質問のステップ
-                // ユーザーにフォローアップの質問、URL、位置情報を送信
-                return client.replyMessage(event.replyToken, [
-                    {
+            case 26:
+                if (userMessage === 'はい') {
+                    // 'はい' に対する処理
+                    const followUpQuestionText = '磐梯熱海温泉が見つかりました。こちらは800年の歴史がある温泉旅館で、湯量が豊富でお肌に良い弱アルカリ泉が楽しめます。観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
+            
+                    // 表示したいURL
+                    const parkURL = 'https://www.bandaiatami.or.jp/';  // 実際のURLに置き換えてください
+            
+                    // 観光地の位置情報
+                    const mapLocationText = '熱海温泉の位置情報:\n緯度: 37.481183901834655\n経度: 140.27217528978971';
+            
+                    currentState.step = 31; // 新しい質問のステップ
+                    // ユーザーにフォローアップの質問、URL、位置情報を送信
+                    return client.replyMessage(event.replyToken, [
+                        {
+                            type: 'text',
+                            text: followUpQuestionText
+                        },
+                        {
+                            type: 'text',
+                            text: parkURL
+                        },
+                        {
+                            type: 'text',
+                            text: mapLocationText
+                        }
+                    ]);
+                } else if (userMessage === 'いいえ') {
+                    // 'いいえ' に対する処理
+                    const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                    // ステップを進める
+                    currentState.step = 22; // 新しい質問のステップ
+                    // ユーザーにフォローアップの質問を送信
+                    return client.replyMessage(event.replyToken, {
                         type: 'text',
                         text: followUpQuestionText
-                    },
-                    {
+                    });
+                } else {
+                    // はい／いいえ以外の回答へのエラーハンドリング
+                    const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                    return client.replyMessage(event.replyToken, {
                         type: 'text',
-                        text: parkURL
-                    },
-                    {
-                        type: 'text',
-                        text: mapLocationText
-                    }
-                ]);
-            } else if (userMessage === 'いいえ') {
-                // 'いいえ' に対する処理
-                const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
-                // ステップを進める
-                currentState.step = 22; // 新しい質問のステップ
-                // ユーザーにフォローアップの質問を送信
-                return client.replyMessage(event.replyToken, {
-                    type: 'text',
-                    text: followUpQuestionText
-                });
-            } else {
-                // はい／いいえ以外の回答へのエラーハンドリング
-                const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
-                return client.replyMessage(event.replyToken, {
-                    type: 'text',
-                    text: errorMessage
-                });
-            }
-            break;
+                        text: errorMessage
+                    });
+                }
+                break;
+            
         case 27:
             if (userMessage === 'はい') {
                 // 'はい' に対する処理
