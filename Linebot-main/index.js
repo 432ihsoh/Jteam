@@ -1091,9 +1091,8 @@ async function handleEvent(event) {
                                     // 表示したいURL
                                     const parkURL = 'https://miharukoma.com/experience/183/';  // 実際のURLに置き換えてください
                     
-                                    // 観光地の位置情報
-                                    const mapLocationText = '三春滝桜:https://maps.google.com/?q=  37.40788850628246, 140.50014756867017';
-                                    // 実際の緯度と経度に置き換えてください
+                                    const mapLocationText = `三春滝桜の位置情報マップで場所を見る: https://www.google.com/maps?q=37.40781180602203,140.50011538216384`;
+
                     
                                     currentState.step = 31; // 新しい質問のステップ
                                     // ユーザーにフォローアップの質問、URL、位置情報を送信
@@ -1430,6 +1429,56 @@ async function handleEvent(event) {
                                                     });
                                                 }
                                                 break;
+
+                                                case 39:
+                                                    if (userMessage === 'はい') {
+                                                        // 'はい' に対する処理
+                                                        const followUpQuestionText = '郡山布引　風の高原が見つかりました こちらは夏にはひまわり、秋にはコスモスなど、季節の花々が楽しめます。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
+                                        
+                                                        // 表示したいURL
+                                                        const parkURL = '湖南町商工会 ホームページ -湖南町の観光案内- (konanmachi.com)';  // 実際のURLに置き換えてください
+                                        
+                                                        // 観光地の位置情報
+                                                        const mapLocationText = `郡山布引　風の高原の位置情報マップで場所を見る: https://www.google.com/maps?q=37.27991105329917, 140.6297776745744`;
+            
+                
+                                                        // 実際の緯度と経度に置き換えてください
+                                        
+                                                        currentState.step = 31; // 新しい質問のステップ
+                                                        // ユーザーにフォローアップの質問、URL、位置情報を送信
+                                                        return client.replyMessage(event.replyToken, [
+                                                            {
+                                                                type: 'text',
+                                                                text: followUpQuestionText
+                                                            },
+                                                            {
+                                                                type: 'text',
+                                                                text: parkURL
+                                                            },
+                                                            {
+                                                                type: 'text',
+                                                                text: mapLocationText
+                                                            }
+                                                        ]);
+                                                    } else if (userMessage === 'いいえ') {
+                                                        // 'いいえ' に対する処理
+                                                        const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                                                        // ステップを進める
+                                                        currentState.step = 22; // 新しい質問のステップ
+                                                        // ユーザーにフォローアップの質問を送信
+                                                        return client.replyMessage(event.replyToken, {
+                                                            type: 'text',
+                                                            text: followUpQuestionText
+                                                        });
+                                                    } else {
+                                                        // はい／いいえ以外の回答へのエラーハンドリング
+                                                        const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
+                                                        return client.replyMessage(event.replyToken, {
+                                                            type: 'text',
+                                                            text: errorMessage
+                                                        });
+                                                    }
+                                                    break;
                              
                              
 
