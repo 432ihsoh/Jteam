@@ -1508,7 +1508,7 @@ async function handleEvent(event) {
                                             
                                                             // 表示したいURL
                                                             const parkURL = 'https://space-park.jp/';  // 実際のURLに置き換えてください
-                                                            const mapLocationText = `スペースパークの位置情報マップで場所を見る: https://www.google.com/maps?q=37.40015840423764, 140.38832288216346`;
+                                                            const mapLocationText = `スペースパークの位置情報マップで場所を見る: https://www.google.com/maps?q=37.40015840423764,140.38832288216346`;
                                             
                                                            
                 
