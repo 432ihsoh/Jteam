@@ -1402,54 +1402,7 @@ async function handleEvent(event) {
                                                 }
                                                 break;
 
-                                                case 39:
-                                                    if (userMessage === 'はい') {
-                                                        // 'はい' に対する処理
-                                                        const followUpQuestionText = '郡山布引　風の高原が見つかりました こちらは夏にはひまわり、秋にはコスモスなど、季節の花々が楽しめます。\n観光地の詳細または観光地の位置情報は下のURLをご確認ください。';
-                                                
-                                                        // 表示したいURL
-                                                        const parkURL = '湖南町商工会 ホームページ -湖南町の観光案内- (konanmachi.com)';  // 実際のURLに置き換えてください
-                                                
-                                                        // 観光地の位置情報
-                                                        const mapLocationText = `郡山布引　風の高原の位置情報マップで場所を見る: https://www.google.com/maps?q=37.27991105329917, 140.6297776745744`;
-                                                
-                                                        currentState.step = 31; // 新しい質問のステップ
-                                                        // ユーザーにフォローアップの質問、URL、位置情報を送信
-                                                        return client.replyMessage(event.replyToken, [
-                                                            {
-                                                                type: 'text',
-                                                                text: followUpQuestionText
-                                                            },
-                                                            {
-                                                                type: 'text',
-                                                                text: parkURL
-                                                            },
-                                                            {
-                                                                type: 'text',
-                                                                text: mapLocationText
-                                                            }
-                                                        ]);
-                                                    } else if (userMessage === 'いいえ') {
-                                                        // 'いいえ' に対する処理
-                                                        currentState.step = 1; // 新しい質問のステップ
-                                                        // case 1 に移動
-                                                        return handleCase1();
-                                                    } else {
-                                                        // はい／いいえ以外の回答へのエラーハンドリング
-                                                        const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
-                                                        return client.replyMessage(event.replyToken, {
-                                                            type: 'text',
-                                                            text: errorMessage
-                                                        });
-                                                    }
-                                                    break;
-                                                
-                                                function handleCase1() {
-                                                    // 質問なしで case 1 に移動する処理をここに書く
-                                                    // 例えば、新しい質問をクライアントに送信するなど
-                                                    // ロジックに応じて必要な処理を行ってください
-                                                }
-                                                
+                                               
                                                     case 40:
                                                         if (userMessage === 'はい') {
                                                             // 'はい' に対する処理
@@ -1482,9 +1435,9 @@ async function handleEvent(event) {
                                                             ]);
                                                         } else if (userMessage === 'いいえ') {
                                                             // 'いいえ' に対する処理
-                                                            const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                                                            const followUpQuestionText = '最初の質問に戻ります';
                                                             // ステップを進める
-                                                            currentState.step = 22; // 新しい質問のステップ
+                                                            currentState.step = 1; // 新しい質問のステップ
                                                             // ユーザーにフォローアップの質問を送信
                                                             return client.replyMessage(event.replyToken, {
                                                                 type: 'text',
