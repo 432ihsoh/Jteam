@@ -1136,7 +1136,7 @@ async function handleEvent(event) {
                                         // 'いいえ' に対する処理
                                         
                                         // ステップを進める
-                                        currentState.step = 1; // 新しい質問のステップ
+                                        currentState.step = 1  ; // 新しい質問のステップ
                                         // ユーザーにフォローアップの質問を送信
                                         return client.replyMessage(event.replyToken, {
                                             type: 'text',
@@ -1366,7 +1366,7 @@ async function handleEvent(event) {
             
                                                     // 実際の緯度と経度に置き換えてください
                                     
-                                                    currentState.step = 31; // 新しい質問のステップ
+                                                    currentState.step = 1; // 新しい質問のステップ
                                                     // ユーザーにフォローアップの質問、URL、位置情報を送信
                                                     return client.replyMessage(event.replyToken, [
                                                         {
@@ -1384,9 +1384,9 @@ async function handleEvent(event) {
                                                     ]);
                                                 } else if (userMessage === 'いいえ') {
                                                     // 'いいえ' に対する処理
-                                                    const followUpQuestionText = ' 浄土松公園？（はい／いいえ）';
+                                                    
                                                     // ステップを進める
-                                                    currentState.step = 22; // 新しい質問のステップ
+                                                    currentState.step = 1; // 新しい質問のステップ
                                                     // ユーザーにフォローアップの質問を送信
                                                     return client.replyMessage(event.replyToken, {
                                                         type: 'text',
