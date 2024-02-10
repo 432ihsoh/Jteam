@@ -1434,9 +1434,9 @@ async function handleEvent(event) {
                                                         ]);
                                                     } else if (userMessage === 'いいえ') {
                                                         // 'いいえ' に対する処理
-                                                        const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                                                       
                                                         // ステップを進める
-                                                        currentState.step = 22; // 新しい質問のステップ
+                                                        currentState.step = 1; // 新しい質問のステップ
                                                         // ユーザーにフォローアップの質問を送信
                                                         return client.replyMessage(event.replyToken, {
                                                             type: 'text',
