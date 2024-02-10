@@ -582,7 +582,7 @@ async function handleEvent(event) {
                 // 'いいえ' に対する処理
                 const followUpQuestionText = '布引高原ひまわり畑？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 39; // 新しい質問のステップ
+                currentState.step = 38; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
