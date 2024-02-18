@@ -846,9 +846,9 @@ async function handleEvent(event) {
                 ]);
             } else if (userMessage === 'いいえ') {
                 // 'いいえ' に対する処理
-                const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                const followUpQuestionText = '浄土松公園？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 22; // 新しい質問のステップ
+                currentState.step = 28; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -894,9 +894,9 @@ async function handleEvent(event) {
                     ]);
                 } else if (userMessage === 'いいえ') {
                     // 'いいえ' に対する処理
-                    const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                    const followUpQuestionText = ' ユラックス温泉？（はい／いいえ）';
                     // ステップを進める
-                    currentState.step = 22; // 新しい質問のステップ
+                    currentState.step = 29; // 新しい質問のステップ
                     // ユーザーにフォローアップの質問を送信
                     return client.replyMessage(event.replyToken, {
                         type: 'text',
@@ -941,9 +941,9 @@ async function handleEvent(event) {
                         ]);
                     } else if (userMessage === 'いいえ') {
                         // 'いいえ' に対する処理
-                        const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                        const followUpQuestionText = 'あぶくま洞？（はい／いいえ）';
                         // ステップを進める
-                        currentState.step = 22; // 新しい質問のステップ
+                        currentState.step = 30; // 新しい質問のステップ
                         // ユーザーにフォローアップの質問を送信
                         return client.replyMessage(event.replyToken, {
                             type: 'text',
@@ -989,9 +989,9 @@ async function handleEvent(event) {
                             ]);
                         } else if (userMessage === 'いいえ') {
                             // 'いいえ' に対する処理
-                            const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                            const followUpQuestionText = '田村神社？（はい／いいえ）';
                             // ステップを進める
-                            currentState.step = 22; // 新しい質問のステップ
+                            currentState.step = 31; // 新しい質問のステップ
                             // ユーザーにフォローアップの質問を送信
                             return client.replyMessage(event.replyToken, {
                                 type: 'text',
@@ -1038,9 +1038,9 @@ async function handleEvent(event) {
                                 ]);
                             } else if (userMessage === 'いいえ') {
                                 // 'いいえ' に対する処理
-                                const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                                const followUpQuestionText = '三春滝桜？（はい／いいえ）';
                                 // ステップを進める
-                                currentState.step = 22; // 新しい質問のステップ
+                                currentState.step = 32; // 新しい質問のステップ
                                 // ユーザーにフォローアップの質問を送信
                                 return client.replyMessage(event.replyToken, {
                                     type: 'text',
@@ -1084,9 +1084,9 @@ async function handleEvent(event) {
                                     ]);
                                 } else if (userMessage === 'いいえ') {
                                     // 'いいえ' に対する処理
-                                    const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                                    const followUpQuestionText = '須賀川牡丹園？（はい／いいえ）';
                                     // ステップを進める
-                                    currentState.step = 22; // 新しい質問のステップ
+                                    currentState.step = 34; // 新しい質問のステップ
                                     // ユーザーにフォローアップの質問を送信
                                     return client.replyMessage(event.replyToken, {
                                         type: 'text',
@@ -1183,9 +1183,9 @@ async function handleEvent(event) {
                                             ]);
                                         } else if (userMessage === 'いいえ') {
                                             // 'いいえ' に対する処理
-                                            const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                                            const followUpQuestionText = '郡山市立美術館？（はい／いいえ）';
                                             // ステップを進める
-                                            currentState.step = 22; // 新しい質問のステップ
+                                            currentState.step = 35; // 新しい質問のステップ
                                             // ユーザーにフォローアップの質問を送信
                                             return client.replyMessage(event.replyToken, {
                                                 type: 'text',
@@ -1217,7 +1217,7 @@ async function handleEvent(event) {
         
                                                 // 実際の緯度と経度に置き換えてください
                                 
-                                                currentState.step = 31; // 新しい質問のステップ
+                                                currentState.step = 1; // 新しい質問のステップ
                                                 // ユーザーにフォローアップの質問、URL、位置情報を送信
                                                 return client.replyMessage(event.replyToken, [
                                                     {
@@ -1235,9 +1235,9 @@ async function handleEvent(event) {
                                                 ]);
                                             } else if (userMessage === 'いいえ') {
                                                 // 'いいえ' に対する処理
-                                                const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                                                const followUpQuestionText = 'リカちゃんキャッス？（はい／いいえ）';
                                                 // ステップを進める
-                                                currentState.step = 22; // 新しい質問のステップ
+                                                currentState.step = 36; // 新しい質問のステップ
                                                 // ユーザーにフォローアップの質問を送信
                                                 return client.replyMessage(event.replyToken, {
                                                     type: 'text',
@@ -1266,7 +1266,7 @@ async function handleEvent(event) {
         
                                                 // 実際の緯度と経度に置き換えてください
                                 
-                                                currentState.step = 31; // 新しい質問のステップ
+                                                currentState.step = 1; // 新しい質問のステップ
                                                 // ユーザーにフォローアップの質問、URL、位置情報を送信
                                                 return client.replyMessage(event.replyToken, [
                                                     {
@@ -1284,9 +1284,9 @@ async function handleEvent(event) {
                                                 ]);
                                             } else if (userMessage === 'いいえ') {
                                                 // 'いいえ' に対する処理
-                                                const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                                                const followUpQuestionText = '大堀相馬焼　陶徳窯？（はい／いいえ）';
                                                 // ステップを進める
-                                                currentState.step = 22; // 新しい質問のステップ
+                                                currentState.step = 37; // 新しい質問のステップ
                                                 // ユーザーにフォローアップの質問を送信
                                                 return client.replyMessage(event.replyToken, {
                                                     type: 'text',
@@ -1334,9 +1334,9 @@ async function handleEvent(event) {
                                                     ]);
                                                 } else if (userMessage === 'いいえ') {
                                                     // 'いいえ' に対する処理
-                                                    const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                                                    const followUpQuestionText = '郡山布引　風の高原？（はい／いいえ）';
                                                     // ステップを進める
-                                                    currentState.step = 22; // 新しい質問のステップ
+                                                    currentState.step = 38; // 新しい質問のステップ
                                                     // ユーザーにフォローアップの質問を送信
                                                     return client.replyMessage(event.replyToken, {
                                                         type: 'text',
@@ -1435,9 +1435,9 @@ async function handleEvent(event) {
                                                             ]);
                                                         } else if (userMessage === 'いいえ') {
                                                             // 'いいえ' に対する処理
-                                                            const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                                                            const followUpQuestionText = 'スペースパーク？（はい／いいえ）';
                                                             // ステップを進める
-                                                            currentState.step = 22; // 新しい質問のステップ
+                                                            currentState.step = 41; // 新しい質問のステップ
                                                             // ユーザーにフォローアップの質問を送信
                                                             return client.replyMessage(event.replyToken, {
                                                                 type: 'text',
@@ -1485,7 +1485,7 @@ async function handleEvent(event) {
                                                             ]);
                                                         } else if (userMessage === 'いいえ') {
                                                             // 'いいえ' に対する処理
-                                                            const followUpQuestionText = '大堀相馬焼or 浄土松公園？（はい／いいえ）';
+                                                            const followUpQuestionText = ' 浄土松公園？（はい／いいえ）';
                                                             // ステップを進める
                                                             currentState.step = 22; // 新しい質問のステップ
                                                             // ユーザーにフォローアップの質問を送信
