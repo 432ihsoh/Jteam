@@ -612,7 +612,7 @@ async function handleEvent(event) {
                 // 'いいえ' に対する処理
                 const followUpQuestionText = '果物狩りたい？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 22; // 新しい質問のステップ
+                currentState.step = 40; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -627,36 +627,7 @@ async function handleEvent(event) {
                 });
             }
             break;
-        case 22:
-            if (userMessage === 'はい') {
-                // 'はい' に対する処理
-                const followUpQuestionText = '果物狩り';
-                // ステップを進める
-                currentState.step = 31; // 新しい質問のステップ
-                // ユーザーにフォローアップの質問を送信
-                return client.replyMessage(event.replyToken, {
-                    type: 'text',
-                    text: followUpQuestionText
-                });
-            } else if (userMessage === 'いいえ') {
-                // 'いいえ' に対する処理
-                const followUpQuestionText = '大堀相馬焼？（はい／いいえ）';
-                // ステップを進める
-                currentState.step = 37; // 新しい質問のステップ
-                // ユーザーにフォローアップの質問を送信
-                return client.replyMessage(event.replyToken, {
-                    type: 'text',
-                    text: followUpQuestionText
-                });
-            } else {
-                // はい／いいえ以外の回答へのエラーハンドリング
-                const errorMessage = '申し訳ありませんが、はいかいいえでお答えください。';
-                return client.replyMessage(event.replyToken, {
-                    type: 'text',
-                    text: errorMessage
-                });
-            }
-            break;
+      
 
        
         case 21:
