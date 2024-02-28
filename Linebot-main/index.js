@@ -796,7 +796,7 @@ async function handleEvent(event) {
                 const parkURL = 'https://www.fureai-bokujo.jp/';  // 実際のURLに置き換えてください
 
                 // 観光地の位置情報
-                const mapLocationText = `石筵ふれあい牧場の位置情報:: https://www.google.com/maps?q=37.56036770392612, 140.25822622080534`;
+                const mapLocationText = `石筵ふれあい牧場の位置情報:: https://www.google.com/maps?q=37.56036770392612,140.25822622080534`;
 
 
                 currentState.step = 31; // 新しい質問のステップ
@@ -986,7 +986,7 @@ async function handleEvent(event) {
                                 const parkURL = 'https://akutsu-tamurajinjya.jimdofree.com/';  // 実際のURLに置き換えてください
                 
                                 // 観光地の位置情報
-                                const mapLocationText = ` 田村神社の位置情報:: https://www.google.com/maps?q=37.344540396415255, 140.40525274831967`;
+                                const mapLocationText = ` 田村神社の位置情報:: https://www.google.com/maps?q=37.344540396415255,140.40525274831967`;
 
                               
                                 // 実際の緯度と経度に置き換えてください
@@ -1332,7 +1332,7 @@ async function handleEvent(event) {
                                                     const parkURL = '湖南町商工会 ホームページ -湖南町の観光案内- (konanmachi.com)';  // 実際のURLに置き換えてください
                                     
                                                     // 観光地の位置情報
-                                                    const mapLocationText = `郡山布引　風の高原の位置情報マップで場所を見る: https://www.google.com/maps?q=37.27991105329917, 140.6297776745744`;
+                                                    const mapLocationText = `郡山布引　風の高原の位置情報マップで場所を見る: https://www.google.com/maps?q=37.27991105329917,140.6297776745744`;
         
             
                                                     // 実際の緯度と経度に置き換えてください
@@ -1383,7 +1383,7 @@ async function handleEvent(event) {
                                                             const parkURL = '湖南町商工会 ホームページ -湖南町の観光案内- (konanmachi.com)';  // 実際のURLに置き換えてください
                                             
                                                             // 観光地の位置情報
-                                                            const mapLocationText = `郡山布引　風の高原の位置情報マップで場所を見る: https://www.google.com/maps?q=37.27991105329917, 140.6297776745744`;
+                                                            const mapLocationText = `菅野ファーム果物狩りの位置情報マップで場所を見る: https://www.google.com/maps?q=37.48944694406044,140.31575284227478`;
                 
                     
                                                             // 実際の緯度と経度に置き換えてください
