@@ -674,7 +674,7 @@ async function handleEvent(event) {
                 // 'いいえ' に対する処理
                 const followUpQuestionText = '果物狩りたい？（はい／いいえ）';
                 // ステップを進める
-                currentState.step = 22; // 新しい質問のステップ
+                currentState.step = 40; // 新しい質問のステップ
                 // ユーザーにフォローアップの質問を送信
                 return client.replyMessage(event.replyToken, {
                     type: 'text',
@@ -1336,7 +1336,7 @@ async function handleEvent(event) {
                                                     // 'いいえ' に対する処理
                                                     const followUpQuestionText = '郡山布引　風の高原？（はい／いいえ）';
                                                     // ステップを進める
-                                                    currentState.step = 38; // 新しい質問のステップ
+                                                    currentState.step = 18; // 新しい質問のステップ
                                                     // ユーザーにフォローアップの質問を送信
                                                     return client.replyMessage(event.replyToken, {
                                                         type: 'text',
