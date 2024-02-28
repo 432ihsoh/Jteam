@@ -1311,7 +1311,7 @@ async function handleEvent(event) {
                                                     const parkURL = 'https://www.facebook.com/Oborisoumayaki.Suetoku/';  // 実際のURLに置き換えてください
                                     
                                                     // 観光地の位置情報
-                                                    const mapLocationText = `大堀相馬焼　陶徳窯の位置情報マップで場所を見る: https://www.google.com/maps?q=37.27991105329917, 140.6297776745744`;
+                                                    const mapLocationText = `大堀相馬焼　陶徳窯の位置情報マップで場所を見る: https://www.google.com/maps?q=37.27991105329917,140.6297776745744`;
         
             
                                                     // 実際の緯度と経度に置き換えてください
